@@ -1,0 +1,217 @@
+<!--<style>
+
+
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "sidebar main";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.header {
+  grid-area: header;
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &__search {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: none;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: #34495e;
+  padding: 1rem;
+
+  &__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      display: block;
+      border-radius: 4px;
+
+      &:hover {
+        background: rgba(255,255,255,0.1);
+      }
+    }
+  }
+}
+
+.main {
+  grid-area: main;
+  padding: 2rem;
+  background: #f5f6fa;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+
+  &__item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    h3 {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+  }
+}
+</style>
+
+<div class="container">
+  <header class="header">
+    <h1 class="header__title">Loja Virtual</h1>
+    <input type="search" class="header__search" placeholder="Buscar produtos...">
+    <div class="header__actions">
+      <button>
+        <i class="fas fa-user"></i>
+      </button>
+      <button>
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <ul class="sidebar__menu">
+      <li><a routerLink="/hardware">Hardware</a></li>
+      <li><a routerLink="/software">Software</a></li>
+      <li><a routerLink="/perifericos">Periféricos</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <div class="products">
+      <div class="products__item">
+        <img src="https://picsum.photos/200/200" alt="Produto 1">
+        <h3>Processador Intel i7</h3>
+        <p class="price">R$ 2.499,99</p>
+      </div>
+      <div class="products__item">
+        <img src="https://picsum.photos/200/201" alt="Produto 2">
+        <h3>Windows 11 Pro</h3>
+        <p class="price">R$ 899,99</p>
+      </div>
+      <div class="products__item">
+        <img src="https://picsum.photos/200/202" alt="Produto 3">
+        <h3>Mouse Gamer RGB</h3>
+        <p class="price">R$ 299,99</p>
+      </div>
+    </div>
+  </main>
+</div>-->
+
+<!--<router-outlet></router-outlet>-->
+
+<!-- <style type="text/scss">
+
+</style>
+ -->
+
+<header>
+  <div class="logo">Loja Virtual</div>
+  <div class="search-bar">
+    <input type="text" placeholder="Buscar produtos...">
+  </div>
+  <div class="icons">
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <i class="fas fa-user dropbtn"></i>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+<!--       <i class="fas fa-user" (click)="dropdown.classList.toggle('show')"></i>
+      <div class="dropdown-content" #dropdown>
+        <a href="http://www.google.com/"><i class="fas fa-edit"></i> Editar Categorias</a>
+      </div>
+ -->    </div>
+    <i class="fas fa-sign-out-alt"></i>
+  </div>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <h3>Categorias</h3>
+    <ul>
+      <li>Todos</li>
+      <li>Eletrônicos</li>
+      <li>Roupas</li>
+      <li>Calçados</li>
+      <li>Acessórios</li>
+    </ul>
+  </aside>
+
+  <section class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="Smartphone">
+      <h4>Smartphone Premium</h4>
+      <p>R$ 1299,90</p>
+      <button>Adicionar ao Carrinho</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="Notebook">
+      <h4>Notebook Profissional</h4>
+      <p>R$ 2899,90</p>
+      <button>Adicionar ao Carrinho</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/150" alt="Fones Bluetooth">
+      <h4>Fones Bluetooth</h4>
+      <p>R$ 299,90</p>
+      <button>Adicionar ao Carrinho</button>
+    </div>
+    <!-- Adicione mais produtos conforme necessário -->
+  </section>
+</main>
+
+<!-- Font Awesome para ícones -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
