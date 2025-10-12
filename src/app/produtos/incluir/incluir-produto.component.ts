@@ -1,8 +1,12 @@
 import { Component } from "@angular/core";
-import { Produto } from "./Produto";
-import { ProdutosService } from "./produtos.service";
+import { ProdutosService } from "../produtos.service";
+import { Produto } from "../Produto";
 
-@Component({ selector: 'app-create-product', templateUrl: './incluir-produto.component.html' })
+@Component({ 
+  selector: 'app-create-product', 
+  templateUrl: './incluir-produto.component.html',
+  standalone: false,
+ })
 export class IncluirProdutoComponent {
   produto: Produto = { nome: '', preco: 0 };
 

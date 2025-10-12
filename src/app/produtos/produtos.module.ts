@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { ProdutosRoutingModule, routedComponents } from './produtos-routing.module';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-//    ...routedComponents,
+    routedComponents,
   ],
   imports: [
     ProdutosRoutingModule,
     CommonModule,
-    FormsModule,
-    BrowserModule,
+//    FormsModule,
 //    RouterModule,
+    
   ],
+  providers: [HttpClient]
 })
 export class ProdutosModule { }
