@@ -7,6 +7,7 @@
     <div class="dropdown">
       <i class="fas fa-user dropbtn"></i>
       <div class="dropdown-content">
+        <a href="/produtos/listar">Cadastro de Produtos</a> <!-- Futuramente só vai aparecer para usuário com perfil Administrador -->
         <a href="#">Editar Categorias</a> <!-- Futuramente só vai aparecer para usuário com perfil Administrador -->
         <a href="#">Meus Pedidos</a>
       </div>
@@ -31,8 +32,11 @@
     </ul>
   </aside>
 
-  <section class="products">
-    <router-outlet></router-outlet>
+<!--   <section class="products">
+ -->    
+
+  <router-outlet></router-outlet>
+
 <!--     <div class="product">
       <img src="https://via.placeholder.com/150" alt="Smartphone">
       <h4>Smartphone Premium</h4>
@@ -51,7 +55,11 @@
       <p>R$ 299,90</p>
       <button>Adicionar ao Carrinho</button>
     </div> -->
-  </section>
+
+
+<!--   </section> -->
+
+
 </main>
 
 <!-- Font Awesome para ícones -->

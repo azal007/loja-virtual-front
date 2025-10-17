@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutosService } from '../produtos.service';
-import { Produto } from '../Produto';
+import { Produto } from '../../../core/model/Produto';
+import { ProdutoService } from '../../../core/service/produto.service';
 
 @Component({
   selector: 'app-listar-produtos',
@@ -8,11 +8,11 @@ import { Produto } from '../Produto';
   standalone: false,
 })
 export class ListarProdutosComponent implements OnInit {
-  produtos: Produto[] = ["teste"] as any;
+  produtos: Produto[] = [];
 //  carregando = true;
   erro = '';
 
-  constructor(private produtoService: ProdutosService) {
+  constructor(private produtoService: ProdutoService) {
     console.log('ListarProdutosComponent criado');
   }
 
@@ -21,6 +21,8 @@ export class ListarProdutosComponent implements OnInit {
     this.produtoService.getAll().subscribe({
       next: (dados: any) => {
         this.produtos = dados;
+        console.log(dados);
+        console.log(this.produtos);
 //        this.carregando = false;
       },
       error: (err: any) => {
@@ -28,5 +30,9 @@ export class ListarProdutosComponent implements OnInit {
 //        this.carregando = false;
       }
     });
+  }
+
+  abrirTelaIncluirProduto() {
+    window.location.href = '/produtos/incluir';    
   }
 }

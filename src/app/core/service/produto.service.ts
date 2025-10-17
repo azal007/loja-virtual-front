@@ -1,11 +1,11 @@
 import { Observable } from "rxjs";
-import { Produto } from "./Produto";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Produto } from "../model/Produto";
 
 @Injectable({ providedIn: 'root' })
-export class ProdutosService {
-  private apiUrl = 'https://loja-virtual-backend.onrender.com/api/produtos';
+export class ProdutoService {
+  private apiUrl = 'http://localhost:8080/produtos';
 
   constructor(private http: HttpClient) {}
 

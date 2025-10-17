@@ -115,53 +115,54 @@ main {
     }
   }
 
-  .products {
-    flex: 1;
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+}
 
-    .product {
-      background-color: white;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      text-align: center;
+.products {
+  flex: 1;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; 
+}
 
-      img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 1rem;
-      }
+.product {
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
 
-      h4 {
-        margin: 0.5rem 0;
-        font-size: 1.1rem;
-      }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
 
-      p {
-        font-size: 1rem;
-        color: $primary-color;
-        margin-bottom: 1rem;
-      }
+  h4 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+  }
 
-      button {
-        background-color: $primary-color;
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-        cursor: pointer;
-        border-radius: 4px;
+  p {
+    font-size: 1rem;
+    color: $primary-color;
+    margin-bottom: 1rem;
+  }
 
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
-      }
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
     }
   }
-}
+}    
 
 .dropdown {
   position: relative;

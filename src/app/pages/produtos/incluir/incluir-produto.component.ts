@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { ProdutosService } from "../produtos.service";
-import { Produto } from "../Produto";
+import { Produto } from "../../../core/model/Produto";
+import { ProdutoService } from "../../../core/service/produto.service";
 
 @Component({ 
   selector: 'app-create-product', 
@@ -8,9 +8,9 @@ import { Produto } from "../Produto";
   standalone: false,
  })
 export class IncluirProdutoComponent {
-  produto: Produto = { nome: '', preco: 0 };
+  produto: Produto = { nome: '', urlImagem: '', preco: 0 };
 
-  constructor(private productService: ProdutosService) {}
+  constructor(private productService: ProdutoService) {}
 
   salvar() {
     this.productService.create(this.produto).subscribe(() => {
