@@ -1,11 +1,10 @@
-<section>
 <div class="lista-cadastro">
   @if (produtos.length === 0) {
     <p class="empty-message">Nenhum produto encontrado.</p>
   } @else {
     @for (produto of produtos; track produto.id) {
       <div class="item-cadastro">
-        <div class="product-info">
+        <div>
           <h4>{{ produto.nome }}</h4>
           <p>R$ {{ produto.preco }}</p>
         </div>
@@ -24,6 +23,7 @@
 
 <button class="icon-button add" aria-label="Incluir produto" (click)="abrirTelaIncluirProduto()">Incluir Produto</button>
 
+<!--
 <style>
   .lista-cadastro {
     display: flex;
@@ -52,6 +52,7 @@
   .edit { background-color: #4CAF50; color: white; }
   .delete { background-color: #f44336; color: white; }
 </style>
+-->
 
 <!-- <div *ngIf="produtos.length > 0">  
   <div *ngFor="let produto of produtos">
@@ -69,5 +70,3 @@
   Nenhum produto encontrado.
 </div>
  -->
-
- </section>

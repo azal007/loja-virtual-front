@@ -1,33 +1,10 @@
-<section class="products">
-  <div *ngIf="produtos.length > 0">  
-  <!--
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Smartphone">
-      <h4>Smartphone Premium</h4>
-      <p>R$ 1299,90</p>
+<section>
+  <div *ngIf="produtos.length > 0" class="lista-produtos-venda">  
+    <div *ngFor="let produto of produtos" class="produto-venda">
+      <img src="{{produto.urlImagem}}" alt="{{ produto.nome }}" width="150" height="150" loading="lazy">
+      <h4>{{ produto.nome }}</h4>
+      <p>R$ {{ produto.preco }}</p>
       <button>Adicionar ao Carrinho</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Notebook">
-      <h4>Notebook Profissional</h4>
-      <p>R$ 2899,90</p>
-      <button>Adicionar ao Carrinho</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Fones Bluetooth">
-      <h4>Fones Bluetooth</h4>
-      <p>R$ 299,90</p>
-      <button>Adicionar ao Carrinho</button>
-    </div>
-  -->    
-    <div *ngFor="let produto of produtos">
-      <div class="product">
-        <img src="{{produto.urlImagem}}" alt="{{ produto.nome }}" width="150" height="150">
-        <h4>{{ produto.nome }}</h4>
-        <p>R$ {{ produto.preco }}</p>
-        <button>Adicionar ao Carrinho</button>
-      </div>
-
     </div>
   </div>
 
