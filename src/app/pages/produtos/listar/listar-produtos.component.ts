@@ -9,27 +9,31 @@ import { ProdutoService } from '../../../core/service/produto.service';
 })
 export class ListarProdutosComponent implements OnInit {
   produtos: Produto[] = [];
-//  carregando = true;
-  erro = '';
 
-  constructor(private produtoService: ProdutoService) {
-    console.log('ListarProdutosComponent criado');
-  }
+  constructor(private produtoService: ProdutoService) {}
 
   ngOnInit(): void {
-    console.log('ListarProdutosComponent ngOnInit');
-    this.produtoService.getAll().subscribe({
-      next: (dados: any) => {
-        this.produtos = dados;
-        console.log(dados);
-        console.log(this.produtos);
-//        this.carregando = false;
-      },
-      error: (err: any) => {
-        this.erro = 'Erro ao carregar produtos.';
-//        this.carregando = false;
-      }
+    this.listar();
+  }
+
+  listar() {
+    this.produtoService.listar().subscribe((dados: any) => {
+      this.produtos = dados;
+      console.log(dados);
+      console.log(this.produtos);
     });
+  }
+
+  alterar(id: number) {
+    alert('Funcionalidade de alterar produto ainda não implementada.');
+  }
+
+  excluir(id: number) {
+    if (window.confirm('Tem certeza que deseja excluir?')) {
+      this.produtoService.excluir(id).subscribe((dados: any) => {
+        alert('Produto excluído com sucesso!');
+      });    
+    }
   }
 
   abrirTelaIncluirProduto() {

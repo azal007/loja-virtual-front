@@ -1,19 +1,33 @@
-import { Observable } from "rxjs";
+import { catchError, Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Produto } from "../model/Produto";
+import { BaseService } from "./base.service";
 
 @Injectable({ providedIn: 'root' })
-export class ProdutoService {
-  private apiUrl = 'http://localhost:8080/produtos';
+export class ProdutoService extends BaseService {
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = this.urlBaseApi + '/produtos';
 
-  getAll(): Observable<Produto[]> {
+  constructor(http: HttpClient) {
+    super(http);
+  }
+
+  listar(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.apiUrl);
   }
 
-  create(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(this.apiUrl, produto);
+  incluir(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(this.apiUrl, produto)      
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
+  excluir(id: number): Observable<String> {
+    return this.http.delete<String>(this.apiUrl + '/' + id)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
   }
 }

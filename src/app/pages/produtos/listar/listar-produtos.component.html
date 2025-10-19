@@ -10,10 +10,10 @@
           <p>R$ {{ produto.preco }}</p>
         </div>
         <div class="actions">
-          <button class="icon-button edit" aria-label="Alterar produto">
+          <button class="icon-button edit" aria-label="Alterar produto" (click)="alterar(produto.id)">
             <i class="fas fa-edit"></i>
           </button>
-          <button class="icon-button delete" aria-label="Excluir produto">
+          <button class="icon-button delete" aria-label="Excluir produto" (click)="excluir(produto.id)">
             <i class="fas fa-trash"></i>
           </button>
         </div>

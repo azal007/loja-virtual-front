@@ -18,7 +18,7 @@ export class ListarProdutosParaVendaComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ListarProdutosComponent ngOnInit');
-    this.produtoService.getAll().subscribe({
+    this.produtoService.listar().subscribe({
       next: (dados: any) => {
         this.produtos = dados;
         console.log(dados);

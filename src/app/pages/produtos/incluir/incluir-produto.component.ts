@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Produto } from "../../../core/model/Produto";
 import { ProdutoService } from "../../../core/service/produto.service";
+import { CategoriaService } from "../../../core/service/categoria.service";
 
 @Component({ 
   selector: 'app-create-product', 
@@ -8,13 +9,31 @@ import { ProdutoService } from "../../../core/service/produto.service";
   standalone: false,
  })
 export class IncluirProdutoComponent {
-  produto: Produto = { nome: '', urlImagem: '', preco: 0 };
+  produto: Produto = { id: 0, nome: '', categoriaId: 0, urlImagem: '', preco: 0 };
+  categorias: any[] = [];
 
-  constructor(private productService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService, private categoriaService: CategoriaService) {}
+
+  ngOnInit(): void {
+    this.carregarCategorias();
+  }
 
   salvar() {
-    this.productService.create(this.produto).subscribe(() => {
+    this.produtoService.incluir(this.produto).subscribe(() => {
       alert('Produto cadastrado com sucesso!');
+      this.irParaPaginaListarProdutos();
     });
+  }
+
+  carregarCategorias() {
+    this.categoriaService.listar().subscribe((dados: any) => {
+      this.categorias = dados;
+      console.log(dados);
+      console.log(this.categorias);
+    });
+  }
+
+  irParaPaginaListarProdutos() {
+    window.location.href = '/produtos/listar';
   }
 }
