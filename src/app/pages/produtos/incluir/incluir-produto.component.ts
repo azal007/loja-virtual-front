@@ -28,8 +28,6 @@ export class IncluirProdutoComponent {
   carregarCategorias() {
     this.categoriaService.listar().subscribe((dados: any) => {
       this.categorias = dados;
-      console.log(dados);
-      console.log(this.categorias);
     });
   }
 
