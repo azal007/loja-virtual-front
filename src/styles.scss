@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-    font-family: 'Montserrat';
-    src: url('../public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Montserrat';
+  src: url('../public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
 $primary-color: black;
@@ -33,6 +34,11 @@ header {
     color: $primary-color;
   }
 
+  .logo a {
+    text-decoration: none;
+    color: $primary-color;
+  }
+
   .search-bar {
     flex: 1;
     margin: 0 2rem;
@@ -43,6 +49,11 @@ header {
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
+    }
+
+    i {
+      margin-left: -30px;
+      cursor: pointer;
     }
   }
 
@@ -61,15 +72,14 @@ main {
   display: flex;
   font-family: $font-stack;
 
-  .sidebar {
-    width: 250px;
+  .sidebar-esquerda {
+    width: 275px;
     background-color: white;
-    padding: 1rem;    
+    padding: 1rem;
     border-right: 1px solid #ccc;
-    margin: rem;
 
-    .categorias {      
-      margin-bottom: 2rem;
+    .categorias {
+      // margin-bottom: 2rem;
       border: 1px solid $primary-color;
       padding: 1rem;
     }
@@ -98,80 +108,209 @@ main {
     }
   }
 
-  .lista-produtos-venda {
-      flex: 1;
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+  app-listar-produtos {
+    display: flex;
+    width: 100%;
   }
 
-  .produto-venda {
-      background-color: white;
-      padding: 1rem;
+  .sidebar-direita {
+    width: 275px;
+    background-color: white;
+    padding: 1rem;
+    border-right: 1px solid #ccc;
+
+    .filtros {
+      // margin-bottom: 2rem;
       border: 1px solid $primary-color;
-      border-radius: 6px;
-      text-align: center;
+      padding: 1rem;
 
-      img {
-//          max-width: 100%;
-//          height: auto;
-          margin-bottom: 1rem;
+      h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: $primary-color;
       }
 
-      h4 {
-          margin: 0.5rem 0;
-          font-size: 1.1rem;
+      label {
+        display: flex;
+        margin-bottom: 0.8rem;
+        padding: 0.7rem;
       }
 
-      p {
-          font-size: 1rem;
-          color: $primary-color;
-          margin-bottom: 1rem;
+      input {
+        padding: 0.5rem;
       }
 
-      button {
-          background-color: $primary-color;
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.7rem;
+
+        .adicionar {
+          background-color: #4CAF50;
           color: white;
-          border: none;
-          padding: 0.5rem 1rem;
-          font-size: 0.9rem;
-          cursor: pointer;
-          border-radius: 4px;
-
+          border-color: $gray-light;
+          
           &:hover {
-              background-color: darken($primary-color, 10%);
+            background-color: rgb(8, 207, 8);
           }
+        }
+        
+        .limpar {
+          background-color: rgb(207, 8, 8);
+          color: white;
+          border-color: $gray-light;
+          
+          &:hover {
+            background-color: #F44336;
+          }
+        }
+
+        button {
+          width: 90px;
+          padding: 0.5rem;
+          margin-bottom: 0.8rem;
+          cursor: pointer;
+          border: none;
+          border-radius: 2px;
+        }
+
       }
+
+    }
   }
 
-  .lista-cadastro {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+}
+
+.lista-produtos-venda {
+  flex: 1;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.produto-venda {
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid $primary-color;
+  border-radius: 6px;
+  text-align: center;
+
+  img {
+    //          max-width: 100%;
+    //          height: auto;
+    margin-bottom: 1rem;
   }
 
-  .item-cadastro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  h4 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
   }
-  .actions {
-    display: flex;
-    gap: 0.5rem;
+
+  p {
+    font-size: 1rem;
+    color: $primary-color;
+    margin-bottom: 1rem;
   }
-  .icon-button {
-    padding: 0.5rem;
+
+  button {
+    background-color: $primary-color;
+    color: white;
     border: none;
-    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
   }
-  .edit { background-color: #4CAF50; color: white; }
-  .delete { background-color: #f44336; color: white; }
+}
+
+app-listar-usuarios {
+  display: flex;
+  width: 100%;
+}
+
+.lista-cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.item-cadastro {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.include {
+  background-color: rgb(8, 8, 207);
+  color: white;
+  
+  &:hover {
+    background-color: #1f53d7;
+  }
+}
+
+.edit {
+  background-color: #4CAF50;
+  color: white;
+
+  &:hover {
+    background-color: rgb(8, 207, 8);
+  }
+}
+
+.delete {
+  background-color: rgb(207, 8, 8);
+  color: white;
+
+  &:hover {
+    background-color: #F44336;
+  }
+}
+
+
+// app-incluir {
+//   height: 100vh;
+//   width: 100%;
+// }
+
+.form-group {
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 }
 
 .dropdown {
@@ -183,7 +322,7 @@ main {
     position: absolute;
     background-color: white;
     min-width: 150px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     left: -15px;
 
@@ -194,8 +333,8 @@ main {
       display: block;
 
       &:hover {
-          background-color: rgb(207, 8, 8);
-          color: white;
+        background-color: rgb(207, 8, 8);
+        color: white;
       }
     }
   }

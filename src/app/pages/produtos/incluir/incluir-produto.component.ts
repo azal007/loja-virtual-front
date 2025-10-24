@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
-import { Produto } from "../../../core/model/Produto";
-import { ProdutoService } from "../../../core/service/produto.service";
-import { CategoriaService } from "../../../core/service/categoria.service";
+import { Component }         from "@angular/core";
+
+import { Produto }           from "../../../core/model/Produto";
+import { ProdutoService }    from "../../../core/service/produto.service";
+import { CategoriaService }  from "../../../core/service/categoria.service";
 
 @Component({ 
   selector: 'app-create-product', 

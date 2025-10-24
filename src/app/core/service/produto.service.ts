@@ -1,8 +1,9 @@
+import { Injectable }             from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { catchError, Observable } from "rxjs";
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Produto } from "../model/Produto";
-import { BaseService } from "./base.service";
+
+import { Produto }                from "../model/Produto";
+import { BaseService }            from "./base.service";
 
 @Injectable({ providedIn: 'root' })
 export class ProdutoService extends BaseService {
@@ -14,7 +15,24 @@ export class ProdutoService extends BaseService {
   }
 
   listar(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.apiUrl);
+    return this.http.get<Produto[]>(this.apiUrl)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
+  listarComFiltro(parametros: HttpParams): Observable<Produto[]> {
+    return this.http.get<Produto[]>(this.apiUrl, { params: parametros })
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
+  buscarPorId(id: number): Observable<Produto> {
+    return this.http.get<Produto>(this.apiUrl + '/' + id)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
   }
 
   incluir(produto: Produto): Observable<Produto> {

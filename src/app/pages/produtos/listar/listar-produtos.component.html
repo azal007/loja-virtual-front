@@ -1,27 +1,56 @@
 <div class="lista-cadastro">
   @if (produtos.length === 0) {
-    <p class="empty-message">Nenhum produto encontrado.</p>
+  <p class="empty-message">Nenhum produto encontrado.</p>
   } @else {
-    @for (produto of produtos; track produto.id) {
-      <div class="item-cadastro">
-        <div>
-          <h4>{{ produto.nome }}</h4>
-          <p>R$ {{ produto.preco }}</p>
-        </div>
-        <div class="actions">
-          <button class="icon-button edit" aria-label="Alterar produto" (click)="alterar(produto.id)">
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="icon-button delete" aria-label="Excluir produto" (click)="excluir(produto.id)">
-            <i class="fas fa-trash"></i>
-          </button>
-        </div>
-      </div>
-    }
+  @for (produto of produtos; track produto.id) {
+  <div class="item-cadastro">
+    <div>
+      <h4>{{ produto.nome }}</h4>
+      <p>R$ {{ produto.preco }}</p>
+    </div>
+    <div class="actions">
+      <button class="icon-button include" aria-label="Incluir produto" (click)="abrirTelaIncluirProduto()">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="icon-button edit" aria-label="Alterar produto" (click)="alterar(produto.id)">
+        <i class="fas fa-edit"></i>
+      </button>
+      <button class="icon-button delete" aria-label="Excluir produto" (click)="excluir(produto.id)">
+        <i class="fas fa-trash"></i>
+      </button>
+    </div>
+  </div>
+  }
   }
 </div>
 
-<button class="icon-button add" aria-label="Incluir produto" (click)="abrirTelaIncluirProduto()">Incluir Produto</button>
+
+<aside class="sidebar-direita">
+  <div class="filtros">
+    <h3>FILTROS</h3>
+    
+    <label for="categoria">
+      <input id="categoria" [(ngModel)]="filtroCategoria" type="text" placeholder="Categoria" />
+    </label>
+    
+    <label for="precoMin">
+      <input id="precoMin" [(ngModel)]="filtroPrecoMin" type="text" placeholder="Preço Mínimo" />
+    </label>
+    
+    <label for="precoMax">
+      <input id="precoMax" [(ngModel)]="filtroPrecoMax" type="text" placeholder="Preço Máximo" />
+    </label>
+    
+    <label for="ativo">
+      <input id="ativo" [(ngModel)]="filtroAtivo" type="text" placeholder="Ativo" />
+    </label>
+
+    <div class="buttons">
+      <button class="adicionar" (click)="adicionarFiltros()">Adicionar</button>
+      <button class="limpar" (click)="limparFiltros()">Limpar</button>
+    </div>
+  </div>
+</aside>
 
 <!--
 <style>

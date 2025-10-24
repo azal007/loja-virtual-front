@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { IncluirProdutoComponent } from './incluir/incluir-produto.component';
+import { NgModule }                         from '@angular/core';
+import { RouterModule, Routes }             from '@angular/router';
+import { IncluirProdutoComponent }          from './incluir/incluir-produto.component';
 import { ListarProdutosParaVendaComponent } from './listar-para-venda/listar-produtos-para-venda.component';
-import { ListarProdutosComponent } from './listar/listar-produtos.component';
+import { ListarProdutosComponent }          from './listar/listar-produtos.component';
 
 const routes: Routes = [{
   path: '',
@@ -22,14 +22,18 @@ const routes: Routes = [{
   ],
 }];
 
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class ProdutosRoutingModule { }
-
 export const routedComponents = [
   ListarProdutosParaVendaComponent,
   ListarProdutosComponent,
   IncluirProdutoComponent
 ];
+
+@NgModule({
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ],
+})
+export class ProdutosRoutingModule { }
