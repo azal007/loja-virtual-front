@@ -65,15 +65,6 @@ export class ListarProdutosComponent implements OnInit {
     this.listar();
   }
 
-  pesquisar(): void {
-    const params = this.validadarFiltros();
-    // Chama o serviço para listar produtos com os filtros aplicados
-    // O subscribe aguarda a resposta assíncrona e após receber os dados, atualiza a lista de produtos
-    this.produtoService.listarComFiltro(params).subscribe((produtos) => {
-      this.produtos = produtos;
-    });
-  }
-
   validadarFiltros(): HttpParams {
     let params = new HttpParams();
     
