@@ -11,10 +11,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     ProdutosRoutingModule,
     CommonModule,
-    FormsModule,
-//    RouterModule,
-    
-  ],
+    FormsModule
+],
   providers: [HttpClient]
 })
 export class ProdutosModule { }

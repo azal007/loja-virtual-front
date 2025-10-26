@@ -1,72 +1,35 @@
 <div class="lista-cadastro">
-  @if (produtos.length === 0) {
-    <p class="empty-message">Nenhum produto encontrado.</p>
-  } @else {
-    @for (produto of produtos; track produto.id) {
-      <div class="item-cadastro">
-        <div>
-          <h4>{{ produto.nome }}</h4>
-          <p>R$ {{ produto.preco }}</p>
-        </div>
-        <div class="actions">
-          <button class="icon-button edit" aria-label="Alterar produto" (click)="alterar(produto.id)">
-            <i class="fas fa-edit"></i>
-          </button>
-          <button class="icon-button delete" aria-label="Excluir produto" (click)="excluir(produto.id)">
-            <i class="fas fa-trash"></i>
-          </button>
-        </div>
-      </div>
+  <h1>Lista de Produtos</h1>
+
+    @if (produtos.length === 0) {
+      <p class="empty-message">Nenhum produto encontrado.</p>
+    } @else {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" width="60%">Nome</th>
+                    <th scope="col" width="20%">Preço</th>
+                    <th scope="col" width="20%">Ações</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let produto of produtos">
+                    <td>{{produto.nome}}</td>
+                    <td>{{produto.preco}}</td>
+                    <td>
+                      <button class="icon-button edit" aria-label="Alterar produto" (click)="alterar(produto.id)">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="icon-button delete" aria-label="Excluir produto" (click)="excluir(produto.id)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>                
+                </tr>
+            </tbody>
+        </table>
+
     }
-  }
-</div>
-
-<button class="icon-button add" aria-label="Incluir produto" (click)="abrirTelaIncluirProduto()">Incluir Produto</button>
-
-<!--
-<style>
-  .lista-cadastro {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .item-cadastro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  .actions {
-    display: flex;
-    gap: 0.5rem;
-  }
-  .icon-button {
-    padding: 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .edit { background-color: #4CAF50; color: white; }
-  .delete { background-color: #f44336; color: white; }
-</style>
--->
-
-<!-- <div *ngIf="produtos.length > 0">  
-  <div *ngFor="let produto of produtos">
-    <div>
-      <img src="{{produto.urlImagem}}" alt="{{ produto.nome }}" width="150" height="150">
-      <h4>{{ produto.nome }}</h4>
-      <p>R$ {{ produto.preco }}</p>
-      <button>Adicionar ao Carrinho</button>
-    </div>
-
   </div>
-</div>
- -->
-<!-- <div *ngIf="!carregando && produtos.length === 0" class="vazio">
-  Nenhum produto encontrado.
-</div>
- -->
+
+  <button class="icon-button add" aria-label="Incluir produto" (click)="abrirTelaIncluirProduto()">Incluir Produto</button>
