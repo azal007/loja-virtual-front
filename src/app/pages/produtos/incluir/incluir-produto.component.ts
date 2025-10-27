@@ -10,7 +10,7 @@ import { CategoriaService }  from "../../../core/service/categoria.service";
   standalone: false,
  })
 export class IncluirProdutoComponent {
-  produto: Produto = { id: 0, nome: '', categoriaId: 0, urlImagem: '', preco: 0 };
+  produto: Produto = { id: 0, nome: '', categoriaId: 0, urlImagem: '', preco: 0, descricao: '' };
   categorias: any[] = [];
 
   constructor(private produtoService: ProdutoService, private categoriaService: CategoriaService) {}

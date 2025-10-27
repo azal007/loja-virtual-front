@@ -14,23 +14,31 @@ export abstract class BaseService {
     })
   }
  */
-  protected handleError(error: any) {
+  protected handleError(e: any) {
+    console.error(`Error Code: ${e?.status}\nMessage: ${e?.message}`);
     let errorMessage = '';
 
-    if (error.error == null || error.error.mensagem == null) {
-      // Server status code message
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    // Server status code message
+    if (e.error == null || e.error.mensagem == null) {
+      errorMessage = `Error Code: ${e.status}\nMessage: ${e.message}`;
       alert('Erro ao chamar a API: ' + errorMessage);
-    } else if (error.error instanceof ErrorEvent) {
-      // Client-side error
-      errorMessage = error.error.message;
-      alert('Erro: ' + errorMessage);
-    } else {
-      // Server custom message
-      errorMessage = error.error.mensagem;
+
+    // Client-side error
+    } else if (e.error instanceof ErrorEvent) {
+      errorMessage = e.error.message;
       alert('Erro: ' + errorMessage);
 
-      console.error(`Error Code: ${error.status}\nMessage: ${error.message}`);
+    } else {
+      // Server custom message
+      errorMessage = e.error.mensagem;
+
+      // Lista de erros de validação
+      if (e.error.errosValidacao != null && e.error.errosValidacao.length > 0) {
+        e.error.errosValidacao.forEach((err: string) => {
+          errorMessage += '\n - ' + err;
+        });
+      }
+      alert('Erro: ' + errorMessage);
     }
     return throwError(errorMessage);
   }

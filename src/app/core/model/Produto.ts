@@ -4,4 +4,5 @@ export interface Produto {
   categoriaId: number;
   urlImagem: string; 
   preco: number;
+  descricao: string;
 }

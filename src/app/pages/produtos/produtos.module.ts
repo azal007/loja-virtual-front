@@ -12,10 +12,8 @@ import { ProdutosRoutingModule, routedComponents } from './produtos-routing.modu
   imports: [
     ProdutosRoutingModule,
     CommonModule,
-    FormsModule,
-//    RouterModule,
-    
-  ],
+    FormsModule
+],
   providers: [HttpClient]
 })
 export class ProdutosModule { }
