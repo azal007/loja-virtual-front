@@ -1,7 +1,8 @@
 <header>
-  <div class="logo">LOJA VIRTUAL</div>
+  <div class="logo"> <a href="#">LOJA VIRTUAL</a></div>
   <div class="search-bar">
     <input type="text" placeholder="Buscar produtos...">
+    <i  class="fas fa-search dropbtn"></i>
   </div>
   <div class="icons">
     <div class="dropdown">
@@ -9,19 +10,20 @@
       <div class="dropdown-content">
         <a href="/produtos/listar">Cadastro de Produtos</a> <!-- Futuramente só vai aparecer para usuário com perfil Administrador -->
         <a href="#">Editar Categorias</a> <!-- Futuramente só vai aparecer para usuário com perfil Administrador -->
+        <a href="/usuarios/listar">Cadastro de Usuários</a>
         <a href="#">Meus Pedidos</a>
       </div>
 <!--       <i class="fas fa-user" (click)="dropdown.classList.toggle('show')"></i>
       <div class="dropdown-content" #dropdown>
         <a href="http://www.google.com/"><i class="fas fa-edit"></i> Editar Categorias</a>
       </div>
- -->    </div>
+-->    </div>
     <i class="fas fa-sign-out-alt"></i>
   </div>
 </header>
 
 <main>
-  <aside class="sidebar">
+  <aside class="sidebar-esquerda">
     <div class="categorias">
       <h3>DEPARTAMENTOS</h3>
       <ul>
@@ -34,7 +36,7 @@
   </aside>
 
 <!--   <section class="products">
- -->    
+-->    
 
   <router-outlet></router-outlet>
 

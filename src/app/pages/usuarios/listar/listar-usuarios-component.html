@@ -1,0 +1,50 @@
+<div class="lista-cadastro" *ngIf="usuarios.length === 0">
+    <p>Nenhum usuário cadastrado.</p>
+</div>
+
+<div class="lista-cadastro" *ngIf="usuarios.length !== 0">
+    <div class="item-cadastro" *ngFor="let usuario of usuarios">
+        <div>
+            <h4>{{ usuario.nome }}</h4>
+        </div>
+
+
+        <div class="actions">
+            <button class="icon-button include" aria-label="Incluir produto" (click)="abrirTelaIncluirUsuario()">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="icon-button edit" aria-label="Alterar usuário" (click)="alterar(usuario.id)">
+                <i class="fas fa-edit"></i>
+            </button>
+            <button class="icon-button delete" aria-label="Excluir usuário" (click)="excluir(usuario.id)">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<aside class="sidebar-direita">
+    <div class="filtros">
+        <h3>FILTROS</h3>
+
+        <label for="nome">
+            <input [(ngModel)]="filtrarNome" id="nome" type="text" placeholder="Nome" />
+        </label>
+
+        <label for="cpf">
+            <input [(ngModel)]="filtrarCpf" id="cpf" type="text" placeholder="CPF" />
+        </label>
+
+        <label for="email">
+            <input [(ngModel)]="filtrarEmail" id="email" type="text" placeholder="Email" />
+        </label>
+
+        <label for="ativo">
+            <input [(ngModel)]="filtrarAtivo" id="ativo" type="text" placeholder="Ativo" />
+        </label>
+        <div class="buttons">
+            <button class="adicionar" (click)="adicionarFiltros()">Adicionar</button>
+            <button class="limpar" (click)="limparFiltros()">Limpar</button>
+        </div>
+    </div>
+</aside>
