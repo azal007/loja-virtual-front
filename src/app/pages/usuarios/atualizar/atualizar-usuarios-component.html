@@ -1,0 +1,27 @@
+<form #form="ngForm" (ngSubmit)="salvar()">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input [(ngModel)]="usuario.nome" name="nome" placeholder="Nome" />
+    </div>
+    <div class="form-group">
+        <label for="apelido">Apelido</label>
+        <input [(ngModel)]="usuario.apelido" name="apelido" placeholder="Apelido" />
+    </div>
+    <div class="form-group">
+        <label for="cpf">CPF</label>
+        <input [(ngModel)]="usuario.cpf" name="cpf" placeholder="CPF" />
+    </div>
+    <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento</label>
+        <input [(ngModel)]="usuario.dataNascimento" name="dataNascimento" placeholder="Data de Nascimento" />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input [(ngModel)]="usuario.email" name="email" placeholder="Email" />
+    </div>
+    <div class="form-group">
+        <label for="habilitarNotificacoesPromocoes">Habilitar Notificações de Promoções</label>
+        <input type="checkbox" [(ngModel)]="usuario.habilitarNotificacoesPromocoes" name="habilitarNotificacoesPromocoes" />
+    </div>
+    <button type="submit">Salvar</button>
+</form>

@@ -13,19 +13,29 @@ export class UsuarioService extends BaseService{
     super(http);
   }
 
-  // public buscarPorId(id: number): Observable<Usuario> {
-  //   return this.http.get<Usuario>(this.apiUrl + '/' + id)
-  //     .pipe(
-  //       catchError(error => {return this.handleError(error)})
-  //     );
-  // }
+  public buscarPorId(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(this.apiUrl + '/' + id)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
 
-  // public atualizar(id:number, usuario: Usuario): Observable<Usuario> {
-  //   return this.http.put<Usuario>(this.apiUrl + '/' + id, usuario)
-  //     .pipe(
-  //       catchError(error => {return this.handleError(error)})
-  //     );
-  // }
+  public atualizar(id:number, usuario: Usuario): Observable<Usuario> {
+    console.log("PUT");
+    return this.http.put<Usuario>(this.apiUrl + '/' + id, usuario)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
+  public atualizarParcial(id:number, usuario: Partial<Usuario>): Observable<Usuario> {
+    console.log("PATCH");
+    
+    return this.http.patch<Usuario>(this.apiUrl + '/' + id, usuario)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
 
   public listar(): Observable<Usuario[]> {    
     return this.http.get<Usuario[]>(this.apiUrl);
