@@ -1,15 +1,33 @@
-<form class="form-group" action="post">
-    
-    <label for="name">
-        <input type="text" name="name" id="name" placeholder="Nome"/>
-    </label>
-
-    <label for="apelido">
-        <input type="text" name="apelido" id="apelido" placeholder="Apelido"/>
-    </label>
-
-    <label for="email">
-        <input type="email" name="email" id="email" placeholder="Email"/>
-    </label>
-
-</form>
+<section class="content">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form #form="ngForm" novalidate (ngSubmit)="salvar()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="usuario.email"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="senha">Senha</label>
+                                <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="usuario.senha"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Salvar</button>
+                                <button type="button" class="btn btn-secondary ms-2"
+                                    (click)="irParaPaginaListarUsuarios()">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

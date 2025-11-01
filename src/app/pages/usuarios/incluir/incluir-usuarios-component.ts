@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Usuario }   from '../../../core/model/usuario';
+import { Component }      from '@angular/core';
+import { Usuario }        from '../../../core/model/usuario';
+import { UsuarioService } from '../../../core/service/usuario.service';
 
 @Component({
   selector: 'app-incluir',
@@ -7,15 +8,18 @@ import { Usuario }   from '../../../core/model/usuario';
   standalone: false,
 })
 export class IncluirUsuariosComponent {
-  usuario: Usuario = {
-    id: 0,
-    nome: '',
-    apelido: '',
-    cpf: '',
-    email: '',
-    senha: '',
-    dataNascimento: new Date("0000-00-00"),
-    habilitarNotificacoesPromocoes: false,
-    ativo: true
+  usuario: Usuario = { id: 0, nome: '', apelido: '', cpf: '', email: '', senha: '', dataNascimento: new Date(), habilitarNotificacoesPromocoes: false, ativo: true };
+
+  constructor(private usuarioService: UsuarioService) {}
+
+  salvar() {
+    this.usuarioService.incluir(this.usuario).subscribe(() => {
+      alert('Usuário cadastrado com sucesso!');
+      this.irParaPaginaListarUsuarios();
+    });
+  }
+
+  irParaPaginaListarUsuarios() {
+    window.location.href = '/usuarios/listar';
   }
 }

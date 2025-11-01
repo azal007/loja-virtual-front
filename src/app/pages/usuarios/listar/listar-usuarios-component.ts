@@ -30,7 +30,7 @@ export class ListarUsuariosComponent implements OnInit {
   }
 
   alterar(id: number) {
-    alert('Funcionalidade de alterar produto ainda não implementada.');
+    window.location.href = `/usuarios/atualizar/${id}`;
   }
 
   excluir(id: number) {
