@@ -8,7 +8,7 @@ import { UsuarioService } from '../../../core/service/usuario.service';
   standalone: false,
 })
 export class IncluirUsuariosComponent {
-  usuario: Usuario = { id: 0, nome: '', apelido: '', cpf: '', email: '', senha: '', dataNascimento: new Date(), habilitarNotificacoesPromocoes: false, ativo: true };
+  usuario!: Usuario;
 
   constructor(private usuarioService: UsuarioService) {}
 

@@ -1,17 +1,18 @@
-import { Component }         from "@angular/core";
+import { Component, OnInit }         from "@angular/core";
 
 import { Produto }           from "../../../core/model/Produto";
 import { ProdutoService }    from "../../../core/service/produto.service";
 import { CategoriaService }  from "../../../core/service/categoria.service";
+import { Categoria }          from "../../../core/model/Categoria";
 
 @Component({ 
   selector: 'app-incluir', 
   templateUrl: './incluir-produto.component.html',
   standalone: false,
 })
-export class IncluirProdutoComponent {
-  produto: Produto = { id: 0, nome: '', categoriaId: 0, urlImagem: '', preco: 0, descricao: '' };
-  categorias: any[] = [];
+export class IncluirProdutoComponent implements OnInit {
+  produto!: Produto;
+  categorias: Categoria[] = [];
 
   constructor(private produtoService: ProdutoService, private categoriaService: CategoriaService) {}
 
