@@ -39,6 +39,7 @@ export class ListarProdutosComponent implements OnInit {
     if (window.confirm('Tem certeza que deseja excluir?')) {
       this.produtoService.excluir(id).subscribe((dados: any) => {
         alert('Produto excluído com sucesso!');
+        this.listar();
       });
     }
   }

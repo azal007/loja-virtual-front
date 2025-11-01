@@ -37,6 +37,7 @@ export class ListarUsuariosComponent implements OnInit {
     if (window.confirm('Tem certeza que deseja excluir?')) {
       this.usuarioService.excluir(id).subscribe((dados: any) => {
         alert('Usuário excluido com sucesso!');
+        this.listar();
       });
     }
   }
