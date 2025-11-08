@@ -4,7 +4,7 @@
       <img src="{{produto.urlImagem}}" alt="{{ produto.nome }}" width="150" height="150" loading="lazy">
       <h4>{{ produto.nome }}</h4>
       <p>R$ {{ produto.preco }}</p>
-      <button>Adicionar ao Carrinho</button>
+      <button (click)="adicionarNoCarrinho(produto.id)">Adicionar ao Carrinho</button>
     </div>
   </div>
 
