@@ -39,6 +39,7 @@ export class ListarProdutosParaVendaComponent implements OnInit {
         // TODO Remover este log após criar tela de carrinho
         console.log('Carrinho após aumentar QTD produto:', carrinho);
 
+        alert('Adicionado!')
         return;
       }
     }
@@ -49,6 +50,8 @@ export class ListarProdutosParaVendaComponent implements OnInit {
 
     // TODO Remover este log após criar tela de carrinho
     console.log('Carrinho após adicionar produto:', carrinho);
+
+    alert('Adicionado!')
   }
 
   private obterCarrinho(): ItemCarrinho[] {

@@ -1,96 +1,78 @@
-<section class="content-header">
-    <div class="container">
+<div class="container-cadastro">
+    <h1>Incluir Produto</h1>
+
+    <form #form="ngForm" novalidate (ngSubmit)="salvar()">
         <div class="row">
-            <div class="col-12">
-                <h1>Incluir Produto</h1>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="nome" 
+                        name="nome"
+                        [(ngModel)]="produto.nome"
+                        required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select
+                        class="form-control" 
+                        id="categoria" 
+                        name="categoria"
+                        [(ngModel)]="produto.categoriaId"
+                        required>
+                        <option value=""></option>
+                        <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="preco">Preço</label>
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        id="preco" 
+                        name="preco"
+                        [(ngModel)]="produto.preco"
+                        required>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- <app-messages [mensagensErro]="mensagensErro" [mensagensSucesso]="mensagensSucesso"></app-messages>
--->
-
-<section class="content">
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <form #form="ngForm" novalidate (ngSubmit)="salvar()">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="nome">Nome</label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="nome" 
-                                    name="nome"
-                                    [(ngModel)]="produto.nome"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="categoria">Categoria</label>
-                                <select 
-                                    class="form-control" 
-                                    id="categoria" 
-                                    name="categoria"
-                                    [(ngModel)]="produto.categoriaId"
-                                    required>
-                                    <option value=""></option>
-                                    <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nome}}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="preco">Preço</label>
-                                <input 
-                                    type="number" 
-                                    class="form-control" 
-                                    id="preco" 
-                                    name="preco"
-                                    [(ngModel)]="produto.preco"
-                                    required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="urlImagem">URL Imagem</label>
-                                <input 
-                                    class="form-control" 
-                                    id="urlImagem" 
-                                    name="urlImagem"
-                                    [(ngModel)]="produto.urlImagem"
-                                    required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="descricao">Descrição</label>
-                            <textarea id="w3review" 
-                                class="form-control" 
-                                id="descricao" 
-                                name="descricao" 
-                                [(ngModel)]="produto.descricao"
-                                rows="3" 
-                                cols="50"
-                                required>
-                                </textarea>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <button type="submit" [disabled]="!form.valid" class="btn btn-primary" >Salvar</button>
-                            <button type="button" class="btn btn-secondary ms-2" (click)="irParaPaginaListarProdutos()">Cancelar</button>
-                        </div>
-                    </div>
-                </form>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="urlImagem">URL Imagem</label>
+                    <input 
+                        class="form-control" 
+                        id="urlImagem" 
+                        name="urlImagem"
+                        [(ngModel)]="produto.urlImagem"
+                        required>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea id="w3review" 
+                    class="form-control" 
+                    id="descricao" 
+                    name="descricao" 
+                    [(ngModel)]="produto.descricao"
+                    rows="3" 
+                    cols="50"
+                    required>
+                    </textarea>
+            </div>
+        </div>
+        <div class="container-botoes-inferiores">
+            <button type="submit" [disabled]="!form.valid" class="botao-inferior btn btn-primary" >Salvar</button>&nbsp;
+            <button type="button" class="botao-inferior btn btn-secondary ms-2" (click)="irParaPaginaListarProdutos()">Cancelar</button>
+        </div>
+    </form>
+
+</div>

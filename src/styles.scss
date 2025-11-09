@@ -211,7 +211,7 @@ main {
     margin-bottom: 1rem;
   }
 
-  button {
+/*   button {
     background-color: $primary-color;
     color: white;
     border: none;
@@ -223,7 +223,7 @@ main {
     &:hover {
       background-color: darken($primary-color, 10%);
     }
-  }
+  } */
 }
 
 app-listar-usuarios {
@@ -231,15 +231,25 @@ app-listar-usuarios {
   width: 100%;
 }
 
-.lista-cadastro {
+.container-cadastro {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
   width: 100%;
+
+  table {
+    thead {
+      tr {
+        th {
+          text-align: left;
+        }
+      }
+    }
+  }
 }
 
-.item-cadastro {
+/* .item-cadastro {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -247,6 +257,42 @@ app-listar-usuarios {
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+ */
+button {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+  
+  &:hover {
+    background-color: #cccccc;
+  }
+}
+
+
+.container-botoes-inferiores {
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    margin-top: 20px;
+}
+
+.botao-inferior {
+    width: clamp(25%, 250px, 200px);
 }
 
 .actions {
@@ -288,12 +334,6 @@ app-listar-usuarios {
   }
 }
 
-
-// app-incluir {
-//   height: 100vh;
-//   width: 100%;
-// }
-
 .form-group {
   margin-bottom: 1rem;
 
@@ -303,7 +343,8 @@ app-listar-usuarios {
   }
 
   input,
-  textarea {
+  textarea,
+  select {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
