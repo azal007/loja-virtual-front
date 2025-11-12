@@ -1,0 +1,38 @@
+<div class="container-cadastro">
+    <h1>Cadastro de Categorias</h1>
+
+    @if (categorias.length === 0) {
+    <p class="empty-message">Nenhuma categoria encontrada.</p>
+    } @else {
+    <table>
+        <thead>
+            <tr>
+                <th width="93%">Nome</th>
+                <th width="7%">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (categoria of categorias; track categoria.id) {
+            <tr>
+                <td>{{ categoria.nome }}</td>
+                <td class="actions">
+                    <div class="icons">
+                        <button class="icon-button" title="Alterar" (click)="alterar(categoria.id)">
+                            <i class="fas fa-edit"></i>
+                        </button>&nbsp;
+                        <button class="icon-button" title="Excluir" (click)="excluir(categoria.id)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="container-botoes-inferiores">
+        <button class="botao-inferior" (click)="abrirTelaIncluirCategoria()">
+            Incluir
+        </button>
+    </div>
+    }
+</div>

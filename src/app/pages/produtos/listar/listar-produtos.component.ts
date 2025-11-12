@@ -32,7 +32,7 @@ export class ListarProdutosComponent implements OnInit {
   }
 
   alterar(id: number) {
-    alert('Funcionalidade de alterar produto ainda não implementada.');
+    window.location.href = `/produtos/atualizar/${id}`;
   }
 
   excluir(id: number) {

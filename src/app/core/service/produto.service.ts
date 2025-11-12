@@ -35,6 +35,23 @@ export class ProdutoService extends BaseService {
       );
   }
 
+  public atualizar(id:number, produto: Produto): Observable<Produto> {
+    console.log("PUT");
+    return this.http.put<Produto>(this.apiUrl + '/' + id, produto)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
+  public atualizarParcial(id:number, produto: Partial<Produto>): Observable<Produto> {
+    console.log("PATCH");
+
+    return this.http.patch<Produto>(this.apiUrl + '/' + id, produto)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
   incluir(produto: Produto): Observable<Produto> {
     return this.http.post<Produto>(this.apiUrl, produto)      
       .pipe(
