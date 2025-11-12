@@ -19,6 +19,7 @@ body {
   color: $gray-dark;
 }
 
+
 header {
   font-family: $font-stack;
   display: flex;
@@ -108,7 +109,9 @@ main {
     }
   }
 
-  app-listar-produtos {
+  app-listar-categorias,
+  app-listar-produtos,
+  app-listar-usuarios {
     display: flex;
     width: 100%;
   }
@@ -145,24 +148,10 @@ main {
         justify-content: space-between;
         padding: 0.7rem;
 
-        .adicionar {
-          background-color: #4CAF50;
-          color: white;
-          border-color: $gray-light;
-          
-          &:hover {
-            background-color: rgb(8, 207, 8);
-          }
-        }
-        
+        .adicionar,
         .limpar {
-          background-color: rgb(207, 8, 8);
           color: white;
           border-color: $gray-light;
-          
-          &:hover {
-            background-color: #F44336;
-          }
         }
 
         button {
@@ -196,9 +185,9 @@ main {
   border-radius: 6px;
   text-align: center;
 
-      img {
-          margin-bottom: 1rem;
-      }
+  img {
+    margin-bottom: 1rem;
+  }
 
   h4 {
     margin: 0.5rem 0;
@@ -211,7 +200,7 @@ main {
     margin-bottom: 1rem;
   }
 
-/*   button {
+  /*   button {
     background-color: $primary-color;
     color: white;
     border: none;
@@ -226,11 +215,6 @@ main {
   } */
 }
 
-app-listar-usuarios {
-  display: flex;
-  width: 100%;
-}
-
 .container-cadastro {
   display: flex;
   flex-direction: column;
@@ -243,6 +227,14 @@ app-listar-usuarios {
       tr {
         th {
           text-align: left;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          height: 60px;
         }
       }
     }
@@ -277,22 +269,23 @@ button[disabled] {
   background-color: #cccccc;
   cursor: not-allowed;
   opacity: 0.6;
-  
+
   &:hover {
     background-color: #cccccc;
   }
 }
 
 
-.container-botoes-inferiores {
-    display: flex; 
-    justify-content: center; 
-    width: 100%; 
-    margin-top: 20px;
+.container-botoes-inferiores, .container-botao-incluir {
+  display: flex;
+  margin-top: 20px;
 }
 
+.container-botao-incluir {
+  justify-content: center;
+}
 .botao-inferior {
-    width: clamp(25%, 250px, 200px);
+  width: clamp(25%, 250px, 200px);
 }
 
 .actions {
@@ -310,7 +303,7 @@ button[disabled] {
 .include {
   background-color: rgb(8, 8, 207);
   color: white;
-  
+
   &:hover {
     background-color: #1f53d7;
   }
@@ -341,15 +334,32 @@ button[disabled] {
     display: block;
     margin-bottom: 0.5rem;
   }
-
+  
   input,
   textarea,
   select {
+    box-sizing: border-box;
+    display: block;
     width: 100%;
+    max-width: 400px;
     padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    height: 2.4rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: white;
   }
+}
+#habilitarNotificacoesPromocoes {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+
+    input {
+      width: 15px;
+      height: auto;
+    }
 }
 
 .dropdown {

@@ -1,1 +1,27 @@
-<div>incluir works</div>
+<div class="container-cadastro">
+    <h1>Incluir Categoria</h1>
+
+    <form #form="ngForm" novalidate (ngSubmit)="salvar()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="categoria.nome" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="categoriaPai">Categoria pai</label>
+                    <input type="text" class="form-control" id="categoriaPai" name="categoriaPai" [(ngModel)]="categoria.idCategoriaPai" required>
+                </div>
+            </div>
+            <div class="container-botoes-inferiores">
+                <button type="submit" [disabled]="!form.valid"
+                    class="botao-inferior btn btn-primary">Salvar</button>&nbsp;
+                <button type="button" class="botao-inferior btn btn-secondary ms-2"
+                    (click)="irParaPaginaListarCategorias()">Cancelar</button>
+            </div>
+        </div>
+    </form>
+
+</div>

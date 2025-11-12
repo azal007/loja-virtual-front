@@ -1,0 +1,15 @@
+<form #form="ngForm" (ngSubmit)="salvar()">
+    <div class="container-cadastro">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input [(ngModel)]="categoria.nome" name="nome" placeholder="Nome" />
+        </div>
+        @if (categoria.idCategoriaPai != null) {
+            <div class="form-group">
+                <label for="categoriaPai">Categoria Pai</label>
+                <input [(ngModel)]="categoria.idCategoriaPai" name="categoriaPai" placeholder="Categoria" />
+            </div>
+        }
+        <button type="submit">Salvar</button>
+    </div>
+</form>

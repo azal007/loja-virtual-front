@@ -29,10 +29,25 @@
             }
         </tbody>
     </table>
-    <div class="container-botoes-inferiores">
+    <div class="container-botao-incluir">
         <button class="botao-inferior" (click)="abrirTelaIncluirCategoria()">
             Incluir
         </button>
     </div>
     }
 </div>
+
+<aside class="sidebar-direita">
+    <div class="filtros">
+        <h3>FILTROS</h3>
+
+        <label for="ativo">
+            <input id="ativo" [(ngModel)]="filtroAtivo" type="text" placeholder="Ativo" />
+        </label>
+
+        <div class="buttons">
+            <button class="adicionar" (click)="adicionarFiltros()">Adicionar</button>
+            <button class="limpar" (click)="limparFiltros()">Limpar</button>
+        </div>
+    </div>
+</aside>

@@ -11,7 +11,7 @@ import { Categoria }          from "../../../core/model/Categoria";
   standalone: false,
 })
 export class IncluirProdutoComponent implements OnInit {
-  produto: Produto = {id: 0, nome: '', descricao: '', categoriaId: 0, urlImagem: '', preco: 0};
+  produto!: Produto;
   categorias: Categoria[] = [];
 
   constructor(private produtoService: ProdutoService, private categoriaService: CategoriaService) {}
