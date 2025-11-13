@@ -16,11 +16,11 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/usuarios/usuarios.module')
       .then(m => m.UsuariosModule)
   },
-  {
-    path: 'categorias',
-    loadChildren: () => import('./pages/categorias/categorias.module')
-      .then(m => m.CategoriasModule)
-  },
+  // {
+  //   path: 'categorias',
+  //   loadChildren: () => import('./pages/categorias/categorias.module')
+  //     .then(m => m.CategoriasModule)
+  // },
   // {
 //  {
 //    path: '**',
