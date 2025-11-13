@@ -9,7 +9,7 @@ import { ProdutoService } from '../../../core/service/produto.service';
   standalone: false
 })
 export class AtualizarProdutosComponent implements OnInit {
-  produto!: Produto;
+  produto: Produto = {id: 0, nome: '', categoriaId: 0, urlImagem: '', preco: 0,  descricao: ''};
 
   constructor(private route: ActivatedRoute, private produtoService: ProdutoService) { }
 

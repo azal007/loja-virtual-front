@@ -9,7 +9,17 @@ import { UsuarioService } from '../../../core/service/usuario.service';
   standalone: false
 })
 export class AtualizarUsuariosComponent implements OnInit {
-  usuario!: Usuario;
+  usuario: Usuario = {
+    id: 0,
+    nome: '',
+    apelido: '',
+    cpf: '',
+    dataNascimento: new Date(),
+    email: '',
+    senha: '',
+    habilitarNotificacoesPromocoes: false,
+    ativo: false
+  };
 
   constructor(private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
