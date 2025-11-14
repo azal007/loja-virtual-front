@@ -9,12 +9,19 @@ import { UsuarioService } from '../../../core/service/usuario.service';
   standalone: false
 })
 export class AtualizarUsuariosComponent implements OnInit {
-  usuario!: Usuario;  
+  usuario: Usuario = {
+    id: 0,
+    nome: '',
+    apelido: '',
+    cpf: '',
+    dataNascimento: new Date(),
+    email: '',
+    senha: '',
+    habilitarNotificacoesPromocoes: false,
+    ativo: false
+  };
 
-  constructor(
-    private route: ActivatedRoute,
-    private usuarioService: UsuarioService
-  ) {}
+  constructor(private route: ActivatedRoute, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -28,13 +35,13 @@ export class AtualizarUsuariosComponent implements OnInit {
 
   salvar() {
     let parcial: Boolean = false;
-    
+
     for (const key in this.usuario) {
       if (this.usuario[key as keyof Usuario] === null || this.usuario[key as keyof Usuario] === '') {
         parcial = true;
       }
     }
-    
+
     if (parcial) {
       this.atualizarParcial();
     } else {
@@ -56,7 +63,7 @@ export class AtualizarUsuariosComponent implements OnInit {
     });
   }
 
-    irParaPaginaListarUsuarios() {
+  irParaPaginaListarUsuarios() {
     window.location.href = '/usuarios/listar';
   }
 }

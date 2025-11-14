@@ -18,13 +18,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="categoria">Categoria</label>
-                    <select
+                    <select 
                         class="form-control" 
                         id="categoria" 
                         name="categoria"
-                        [(ngModel)]="produto.categoriaId"
+                        [(ngModel)]="categoria"
                         required>
-                        <option value=""></option>
+                        <option value="" disabled>Selecione uma categoria</option>
                         <option *ngFor="let categoria of categorias" value="{{categoria.id}}">{{categoria.nome}}</option>
                     </select>
                 </div>

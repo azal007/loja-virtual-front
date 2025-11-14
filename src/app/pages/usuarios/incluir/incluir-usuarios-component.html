@@ -1,33 +1,26 @@
-<section class="content">
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <form #form="ngForm" novalidate (ngSubmit)="salvar()">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="usuario.email"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="senha">Senha</label>
-                                <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="usuario.senha"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-12">
-                                <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Salvar</button>
-                                <button type="button" class="btn btn-secondary ms-2"
-                                    (click)="irParaPaginaListarUsuarios()">Cancelar</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+<div class="container-cadastro">
+    <h1>Incluir Usuário</h1>
+
+    <form #form="ngForm" novalidate (ngSubmit)="salvar()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="usuario.nome" required>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="text" class="form-control" id="senha" name="senha" [(ngModel)]="usuario.senha" required>
+                </div>
+            </div>
+        </div>
+        <div class="container-botoes-inferiores">
+            <button type="submit" [disabled]="!form.valid" class="botao-inferior btn btn-primary" >Salvar</button>&nbsp;
+            <button type="button" class="botao-inferior btn btn-secondary ms-2" (click)="irParaPaginaListarUsuarios()">Cancelar</button>
+        </div>
+    </form>
+</div>

@@ -1,26 +1,40 @@
-<div class="lista-cadastro" *ngIf="usuarios.length === 0">
-    <p>Nenhum usuário cadastrado.</p>
-</div>
+<div class="container-cadastro">
+    <h1>Cadastro de Usuários</h1>
 
-<div class="lista-cadastro" *ngIf="usuarios.length !== 0">
-    <div class="item-cadastro" *ngFor="let usuario of usuarios">
-        <div>
-            <h4>{{ usuario.nome }}</h4>
-        </div>
-
-
-        <div class="actions">
-            <button class="icon-button include" aria-label="Incluir produto" (click)="abrirTelaIncluirUsuario()">
-                <i class="fas fa-plus"></i>
-            </button>
-            <button class="icon-button edit" aria-label="Alterar usuário" (click)="alterar(usuario.id)">
-                <i class="fas fa-edit"></i>
-            </button>
-            <button class="icon-button delete" aria-label="Excluir usuário" (click)="excluir(usuario.id)">
-                <i class="fas fa-trash"></i>
-            </button>
-        </div>
+    @if (usuarios.length === 0) {
+    <p class="empty-message">Nenhuma categoria encontrada.</p>
+    } @else {
+    <table>
+        <thead>
+            <tr>
+                <th width="93%">Nome</th>
+                <th width="7%">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (usuario of usuarios; track usuario.id) {
+            <tr>
+                <td>{{ usuario.nome }}</td>
+                <td class="actions">
+                    <div class="icons">
+                        <button class="icon-button" title="Alterar" (click)="alterar(usuario.id)">
+                            <i class="fas fa-edit"></i>
+                        </button>&nbsp;
+                        <button class="icon-button" title="Excluir" (click)="excluir(usuario.id)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="container-botao-incluir">
+        <button class="botao-inferior" (click)="abrirTelaIncluirUsuario()">
+            Incluir
+        </button>
     </div>
+    }
 </div>
 
 <aside class="sidebar-direita">

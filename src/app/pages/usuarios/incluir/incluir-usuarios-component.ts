@@ -1,5 +1,5 @@
-import { Component }      from '@angular/core';
-import { Usuario }        from '../../../core/model/usuario';
+import { Component } from '@angular/core';
+import { Usuario } from '../../../core/model/usuario';
 import { UsuarioService } from '../../../core/service/usuario.service';
 
 @Component({
@@ -8,9 +8,19 @@ import { UsuarioService } from '../../../core/service/usuario.service';
   standalone: false,
 })
 export class IncluirUsuariosComponent {
-  usuario!: Usuario;
+  usuario: Usuario = {
+    id: 0,
+    nome: '',
+    apelido: '',
+    cpf: '',
+    dataNascimento: new Date(),
+    email: '',
+    senha: '',
+    habilitarNotificacoesPromocoes: false,
+    ativo: false
+  };
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService) { }
 
   salvar() {
     this.usuarioService.incluir(this.usuario).subscribe(() => {

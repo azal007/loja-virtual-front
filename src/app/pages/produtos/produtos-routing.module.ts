@@ -3,6 +3,7 @@ import { RouterModule, Routes }             from '@angular/router';
 import { IncluirProdutoComponent }          from './incluir/incluir-produto.component';
 import { ListarProdutosParaVendaComponent } from './listar-para-venda/listar-produtos-para-venda.component';
 import { ListarProdutosComponent }          from './listar/listar-produtos.component';
+import { AtualizarProdutosComponent }       from './atualizar/atualizar-produtos-component';
 
 const routes: Routes = [{
   path: '',
@@ -18,6 +19,10 @@ const routes: Routes = [{
     {
       path: 'incluir',
       component: IncluirProdutoComponent,
+    },
+    {
+      path: 'atualizar/:id',
+      component: AtualizarProdutosComponent
     }
   ],
 }];
@@ -25,7 +30,8 @@ const routes: Routes = [{
 export const routedComponents = [
   ListarProdutosParaVendaComponent,
   ListarProdutosComponent,
-  IncluirProdutoComponent
+  IncluirProdutoComponent,
+  AtualizarProdutosComponent
 ];
 
 @NgModule({

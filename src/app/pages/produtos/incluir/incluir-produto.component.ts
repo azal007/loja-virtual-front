@@ -1,9 +1,9 @@
-import { Component, OnInit }         from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { Produto }           from "../../../core/model/Produto";
 import { ProdutoService }    from "../../../core/service/produto.service";
 import { CategoriaService }  from "../../../core/service/categoria.service";
-import { Categoria }          from "../../../core/model/Categoria";
+import { Categoria }         from "../../../core/model/Categoria";
 
 @Component({ 
   selector: 'app-incluir', 
@@ -11,8 +11,9 @@ import { Categoria }          from "../../../core/model/Categoria";
   standalone: false,
 })
 export class IncluirProdutoComponent implements OnInit {
-  produto: Produto = {id: 0, nome: '', descricao: '', categoriaId: 0, urlImagem: '', preco: 0};
+  produto: Produto = {id: 0, nome: '', categoriaId: 0, urlImagem: '', preco: 0,  descricao: ''};
   categorias: Categoria[] = [];
+  categoria: string = "";
 
   constructor(private produtoService: ProdutoService, private categoriaService: CategoriaService) {}
 

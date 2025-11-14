@@ -1,0 +1,25 @@
+<form #form="ngForm" (ngSubmit)="salvar()">
+    <div class="container-cadastro">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input [(ngModel)]="produto.nome" name="nome" placeholder="Nome" />
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input [(ngModel)]="produto.descricao" name="descricao" placeholder="Descrição" />
+        </div>
+        <div class="form-group">
+            <label for="urlImagem">URL da Imagem</label>
+            <input [(ngModel)]="produto.urlImagem" name="urlImagem" placeholder="URL da Imagem" />
+        </div>
+        <div class="form-group">
+            <label for="preco">Preço</label>
+            <input [(ngModel)]="produto.preco" name="preco" placeholder="Preço" />
+        </div>
+        <div class="form-group">
+            <label for="categoriaId">Categoria</label>
+            <input [(ngModel)]="produto.categoriaId" name="categoriaId" placeholder="Categoria" />
+        </div>
+        <button type="submit">Salvar</button>
+    </div>
+</form>

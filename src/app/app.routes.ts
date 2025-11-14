@@ -17,6 +17,11 @@ export const routes: Routes = [
       .then(m => m.UsuariosModule)
   },
   // {
+  //   path: 'categorias',
+  //   loadChildren: () => import('./pages/categorias/categorias.module')
+  //     .then(m => m.CategoriasModule)
+  // },
+  // {
 //  {
 //    path: '**',
 //    redirectTo: 'produtos/listar'
