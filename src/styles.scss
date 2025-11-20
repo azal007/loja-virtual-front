@@ -275,15 +275,17 @@ button[disabled] {
   }
 }
 
-
-.container-botoes-inferiores, .container-botao-incluir {
+.container-botoes-inferiores,
+.container-botao-incluir {
   display: flex;
   margin-top: 20px;
 }
 
-.container-botao-incluir {
-  justify-content: center;
+.container-botoes-listar {
+  display: flex;
+  align-items: center;
 }
+
 .botao-inferior {
   width: clamp(25%, 250px, 200px);
 }
@@ -334,7 +336,7 @@ button[disabled] {
     display: block;
     margin-bottom: 0.5rem;
   }
-  
+
   input,
   textarea,
   select {
@@ -351,15 +353,16 @@ button[disabled] {
     background-color: white;
   }
 }
-#habilitarNotificacoesPromocoes {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
 
-    input {
-      width: 15px;
-      height: auto;
-    }
+#habilitarNotificacoesPromocoes {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+
+  input {
+    width: 15px;
+    height: auto;
+  }
 }
 
 .dropdown {

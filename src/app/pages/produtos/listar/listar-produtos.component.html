@@ -16,31 +16,47 @@
     </thead>
     <tbody>
       @for (produto of produtos; track produto.id) {
-        <tr>
-          <td>{{ produto.nome }}</td>
-          <td>{{ produto.categoriaId }}</td>
-          <td>
-            <img [src]="produto.urlImagem" [alt]="produto.nome" width="50" height="50">
-          </td>
-          <td>R$ {{ produto.preco }}</td>
-          <td class="actions">
-            <div class="icons">
-              <button class="icon-button" title="Alterar" (click)="alterar(produto.id)">
+      <tr>
+        <td>{{ produto.nome }}</td>
+        <td>{{ produto.categoriaId }}</td>
+        <td>
+          <img [src]="produto.urlImagem" [alt]="produto.nome" width="50" height="50">
+        </td>
+        <td>R$ {{ produto.preco }}</td>
+        <td class="actions">
+          <div class="icons">
+            <button class="icon-button" title="Alterar" (click)="alterar(produto.id)">
               <i class="fas fa-edit"></i>
-              </button>&nbsp;
-              <button class="icon-button" title="Excluir" (click)="excluir(produto.id)">
+            </button>&nbsp;
+            <button class="icon-button" title="Excluir" (click)="excluir(produto.id)">
               <i class="fas fa-trash"></i>
-              </button>
-              </div>
-            </td>
-        </tr>
+            </button>
+          </div>
+        </td>
+      </tr>
       }
     </tbody>
   </table>
-  <div class="container-botao-incluir">
-    <button class="botao-inferior" (click)="abrirTelaIncluirProduto()">
-      Incluir
-    </button>
+  <div class="container-botoes-listar">
+    <div style="flex: 2; gap: 1rem">
+      @for (pagina of paginas; track pagina) {
+      @if (pagina <= 5) { <button class="botao-paginacao" (click)="irParaPagina(pagina)">
+        {{ pagina }}
+        </button>
+        } @else if (paginas.slice(-3).includes(pagina)) {
+
+        <button class="botao-paginacao" (click)="irParaPagina(pagina)">
+          {{ pagina }}
+        </button>
+        }
+        }
+    </div>
+    <div style="justify-content: center; flex: 1; display: flex;">
+      <button class="botao-inferior" (click)="abrirTelaIncluirProduto()">
+        Incluir
+      </button>
+    </div>
+    <div style="flex: 2;"></div>
   </div>
   }
 </div>
@@ -48,19 +64,19 @@
 <aside class="sidebar-direita">
   <div class="filtros">
     <h3>FILTROS</h3>
-    
+
     <label for="categoria">
       <input id="categoria" [(ngModel)]="filtroCategoria" type="text" placeholder="Categoria" />
     </label>
-    
+
     <label for="precoMin">
       <input id="precoMin" [(ngModel)]="filtroPrecoMin" type="text" placeholder="Preço Mínimo" />
     </label>
-    
+
     <label for="precoMax">
       <input id="precoMax" [(ngModel)]="filtroPrecoMax" type="text" placeholder="Preço Máximo" />
     </label>
-    
+
     <label for="ativo">
       <input id="ativo" [(ngModel)]="filtroAtivo" type="text" placeholder="Ativo" />
     </label>
