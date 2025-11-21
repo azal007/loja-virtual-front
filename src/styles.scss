@@ -66,6 +66,11 @@ header {
       font-size: 1.5rem;
       cursor: pointer;
     }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 }
 
@@ -165,6 +170,27 @@ main {
 
       }
 
+      // .buttons {
+      //   display: flex;
+      //   justify-content: space-between;
+      //   padding: 0.7rem;
+
+      //   .adicionar,
+      //   .limpar {
+      //     color: white;
+      //     border-color: $gray-light;
+      //   }
+
+      //   button {
+      //     width: 90px;
+      //     padding: 0.5rem;
+      //     margin-bottom: 0.8rem;
+      //     cursor: pointer;
+      //     border: none;
+      //     border-radius: 2px;
+      //   }
+      // }
+
     }
   }
 
@@ -176,6 +202,87 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+}
+
+app-carrinho {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  section {
+    width: 100%;
+  }
+
+  .carrinho-produtos {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+  }
+
+  .produto-venda {
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid $primary-color;
+    border-radius: 6px;
+    text-align: center;
+
+    img {
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+
+    .produtos-info {
+      margin-left: 1rem;
+      text-align: left;
+
+      #preco {
+        font-weight: bold;
+        margin-top: 4rem;
+      }
+    }
+  }
+
+  .resumo {
+    border: 1px solid $primary-color;
+    padding: 1rem;
+
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: $primary-color;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 2px;
+    }
+  }
 }
 
 .produto-venda {
