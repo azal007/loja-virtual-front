@@ -20,7 +20,7 @@ export class ListarProdutosParaVendaComponent implements OnInit {
 
   listar() {
     this.produtoService.listar().subscribe((dados: any) => {
-      this.produtos = dados;
+      this.produtos = dados.resultados;
     });
   }
 

@@ -1,0 +1,26 @@
+<section>
+    <div *ngIf="produtos.length > 0" class="carrinho-produtos">
+        <div *ngFor="let produto of produtos" class="produto-venda">
+            <div>
+                <img src="{{produto.urlImagem}}" alt="{{ produto.nome }}" width="150" height="150" loading="lazy">
+            </div>
+            <div class="produtos-info">
+                <h4>{{ produto.nome }}</h4>
+                <p>{{ produto.descricao }}</p>
+                <p id="preco">R$ {{ produto.preco }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<aside class="sidebar-direita">
+    <div class="resumo">
+        <h3>RESUMO</h3>
+        <p>Valor dos produtos {{ valorTotal }}</p>
+        <div class="buttons">
+            <button>Continuar</button>
+            <button>Voltar</button>
+        </div>
+    </div>
+</aside>

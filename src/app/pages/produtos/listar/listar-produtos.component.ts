@@ -12,6 +12,7 @@ import { HttpParams }           from '@angular/common/http';
 })
 export class ListarProdutosComponent implements OnInit {
   produtos: Produto[] = [];
+  paginas: number[] = [];
 
   filtroNome:      string | null = null;
   filtroCategoria: string | null = null;
@@ -21,13 +22,14 @@ export class ListarProdutosComponent implements OnInit {
 
   constructor(private produtoService: ProdutoService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.listar();
   }
 
   listar() {
     this.produtoService.listar().subscribe((dados: any) => {
-      this.produtos = dados;
+      this.produtos = dados.resultados;
+      this.obterPaginas(dados);
     });
   }
 
@@ -91,5 +93,17 @@ export class ListarProdutosComponent implements OnInit {
     }
 
     return params;
+  }
+
+  obterPaginas(dados: any): void{
+    this.paginas = Array.from({ length: dados.infos.totalPaginas }, (_, i) => i + 1);
+    console.log(this.paginas);  
+  }
+
+  irParaPagina(i: number) {
+    this.produtoService.listarPorPagina(i).subscribe((dados: any) => {
+      this.produtos = dados.resultados;
+      this.obterPaginas(dados);
+    });
   }
 }

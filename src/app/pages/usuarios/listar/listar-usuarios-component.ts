@@ -10,22 +10,24 @@ import { HttpParams }         from '@angular/common/http';
 })
 export class ListarUsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
+  paginas: number[] = [];
   filtrarCpf: string | null =     null;
   filtrarNome: string | null =    null;
   filtrarEmail: string | null =   null;
   filtrarAtivo: boolean | null =  null;
   filtrarApelido: string | null = null;
-
+  
   constructor(private usuarioService: UsuarioService) { }
-
+  
   ngOnInit(): void {
     this.listar();
   }
-
-
+  
+  
   listar() {
     this.usuarioService.listar().subscribe((dados: any) => {
-      this.usuarios = dados;
+      this.usuarios = dados.resultados;
+      this.obterPaginas(dados);
     });
   }
 
@@ -81,5 +83,17 @@ export class ListarUsuariosComponent implements OnInit {
       parametros = parametros.set('ativo', String(this.filtrarAtivo));
     }
     return parametros;
+  }
+
+  obterPaginas(dados: any): void{
+    this.paginas = Array.from({ length: dados.infos.totalPaginas }, (_, i) => i + 1);
+    console.log(this.paginas);  
+  }
+
+  irParaPagina(i: number) {
+    this.usuarioService.listarPorPagina(i).subscribe((dados: any) => {
+      this.usuarios = dados.resultados;
+      this.obterPaginas(dados);
+    });
   }
 }

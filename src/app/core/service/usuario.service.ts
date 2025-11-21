@@ -4,6 +4,7 @@ import { catchError, Observable } from 'rxjs';
 
 import { Usuario }                from '../model/usuario';
 import { BaseService }            from './base.service';
+import { Produto } from '../model/Produto';
 
 @Injectable({providedIn: 'root'})
 export class UsuarioService extends BaseService{
@@ -15,6 +16,13 @@ export class UsuarioService extends BaseService{
 
   public buscarPorId(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(this.apiUrl + '/' + id)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
+  public listarPorPagina(i: number): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.apiUrl + '?numeroPagina=' + i)
       .pipe(
         catchError(error => {return this.handleError(error)})
       );

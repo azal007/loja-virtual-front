@@ -7,7 +7,6 @@ import { BaseService }            from "./base.service";
 
 @Injectable({ providedIn: 'root' })
 export class ProdutoService extends BaseService {
-
   private apiUrl = this.urlBaseApi + '/produtos';
 
   constructor(http: HttpClient) {
@@ -27,6 +26,14 @@ export class ProdutoService extends BaseService {
         catchError(error => {return this.handleError(error)})
       );
   }
+
+  listarPorPagina(i: number): Observable<Produto[]> {
+    return this.http.get<Produto[]>(this.apiUrl + '?numeroPagina=' + i)
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
+  }
+
 
   buscarPorId(id: number): Observable<Produto> {
     return this.http.get<Produto>(this.apiUrl + '/' + id)

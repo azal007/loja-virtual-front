@@ -29,10 +29,26 @@
             }
         </tbody>
     </table>
-    <div class="container-botao-incluir">
-        <button class="botao-inferior" (click)="abrirTelaIncluirUsuario()">
-            Incluir
-        </button>
+    <div class="container-botoes-listar">
+        <div style="flex: 2; gap: 1rem">
+            @for (pagina of paginas; track pagina) {
+            @if (pagina <= 5) { <button class="botao-paginacao" (click)="irParaPagina(pagina)">
+                {{ pagina }}
+                </button>
+                } @else if (paginas.slice(-3).includes(pagina)) {
+
+                <button class="botao-paginacao" (click)="irParaPagina(pagina)">
+                    {{ pagina }}
+                </button>
+                }
+                }
+        </div>
+        <div style="justify-content: center; flex: 1; display: flex;">
+            <button class="botao-inferior" (click)="abrirTelaIncluirUsuario()">
+                Incluir
+            </button>
+        </div>
+        <div style="flex: 2;"></div>
     </div>
     }
 </div>

@@ -16,6 +16,11 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/usuarios/usuarios.module')
       .then(m => m.UsuariosModule)
   },
+  {
+    path: 'carrinho',
+    loadChildren: () => import('./pages/carrinho/carrinho.module')
+      .then(m => m.CarrinhoModule)
+  },
   // {
   //   path: 'categorias',
   //   loadChildren: () => import('./pages/categorias/categorias.module')
