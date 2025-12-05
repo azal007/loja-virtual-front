@@ -14,7 +14,7 @@ export class ListarProdutosComponent implements OnInit {
   produtos: Produto[] = [];
   paginas: number[] = [];
 
-  filtroNome:      string | null = null;
+  filtroNome:      string | null = null;  
   filtroCategoria: string | null = null;
   filtroPrecoMin:  string | null = null;
   filtroPrecoMax:  string | null = null;
@@ -22,7 +22,7 @@ export class ListarProdutosComponent implements OnInit {
 
   constructor(private produtoService: ProdutoService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.listar();
   }
 
@@ -54,8 +54,12 @@ export class ListarProdutosComponent implements OnInit {
     // Chama o serviço para listar produtos com os filtros aplicados
     // O subscribe aguarda a resposta assíncrona e após receber os dados, atualiza a lista de produtos
     const params = this.validadarFiltros();
-    this.produtoService.listarComFiltro(params).subscribe((produtos) => {
-      this.produtos = produtos;
+    console.log("params", params);
+    console.log(this.produtos);
+    
+    this.produtoService.listarComFiltro(params).subscribe((dados: any) => {
+      this.produtos = dados.resultados;
+      this.obterPaginas(dados);
     });
   }
 
@@ -97,7 +101,7 @@ export class ListarProdutosComponent implements OnInit {
 
   obterPaginas(dados: any): void{
     this.paginas = Array.from({ length: dados.infos.totalPaginas }, (_, i) => i + 1);
-    console.log(this.paginas);  
+    console.log(`Total páginas: ${this.paginas}`);  
   }
 
   irParaPagina(i: number) {
