@@ -48,11 +48,12 @@ export class ListarUsuariosComponent implements OnInit {
     window.location.href = '/usuarios/incluir';
   }
 
-  adicionarFiltros() {
+  adicionarFiltros(): void {
     const parametros = this.validarFiltros();
-    this.usuarioService.listarComFiltros(parametros).subscribe((usuarios) => {
-      this.usuarios = usuarios;
-    }) 
+    this.usuarioService.listarComFiltro(parametros).subscribe((dados: any) => {
+      this.usuarios = dados.resultados;
+      this.obterPaginas(dados);
+    });
   }
   
   limparFiltros() {
@@ -67,20 +68,17 @@ export class ListarUsuariosComponent implements OnInit {
   validarFiltros(): HttpParams {
     let parametros: HttpParams = new HttpParams();
 
-    if (this.filtrarNome !== null && this.filtrarNome !== '') {
+    if (this.filtrarNome !== null) {
       parametros = parametros.set('nome', this.filtrarNome);
     }
-    if (this.filtrarApelido !== null && this.filtrarApelido !== '') {
-      parametros = parametros.set('apelido', this.filtrarApelido);
-    }
-    if (this.filtrarCpf !== null && this.filtrarCpf !== '') {
+    if (this.filtrarCpf !== null) {
       parametros = parametros.set('cpf', this.filtrarCpf);
     }
-    if (this.filtrarEmail !== null && this.filtrarEmail !== '') {
+    if (this.filtrarEmail !== null) {
       parametros = parametros.set('email', this.filtrarEmail);
     }
     if (this.filtrarAtivo !== null) {
-      parametros = parametros.set('ativo', String(this.filtrarAtivo));
+      parametros = parametros.set('ativo', this.filtrarAtivo);
     }
     return parametros;
   }

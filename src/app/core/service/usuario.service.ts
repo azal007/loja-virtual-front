@@ -4,7 +4,6 @@ import { catchError, Observable } from 'rxjs';
 
 import { Usuario }                from '../model/usuario';
 import { BaseService }            from './base.service';
-import { Produto } from '../model/Produto';
 
 @Injectable({providedIn: 'root'})
 export class UsuarioService extends BaseService{
@@ -49,8 +48,11 @@ export class UsuarioService extends BaseService{
     return this.http.get<Usuario[]>(this.apiUrl);
   }
 
-  public listarComFiltros(parametros: any): Observable<Usuario[]> {    
-    return this.http.get<Usuario[]>(this.apiUrl, { params: parametros });
+  public listarComFiltro(parametros: any): Observable<Usuario[]> {    
+    return this.http.get<Usuario[]>(this.apiUrl, { params: parametros })
+      .pipe(
+        catchError(error => {return this.handleError(error)})
+      );
   }
 
   public incluir(usuario: Usuario): Observable<Usuario> {

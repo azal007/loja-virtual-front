@@ -53,11 +53,11 @@ export class ListarProdutosComponent implements OnInit {
   adicionarFiltros(): void {
     // Chama o serviço para listar produtos com os filtros aplicados
     // O subscribe aguarda a resposta assíncrona e após receber os dados, atualiza a lista de produtos
-    const params = this.validadarFiltros();
-    console.log("params", params);
+    const parametros = this.validadarFiltros();
+    console.log("parametros", parametros);
     console.log(this.produtos);
     
-    this.produtoService.listarComFiltro(params).subscribe((dados: any) => {
+    this.produtoService.listarComFiltro(parametros).subscribe((dados: any) => {
       this.produtos = dados.resultados;
       this.obterPaginas(dados);
     });
@@ -73,30 +73,30 @@ export class ListarProdutosComponent implements OnInit {
   }
 
   validadarFiltros(): HttpParams {
-    let params = new HttpParams();
+    let parametros = new HttpParams();
     
     //  A chave do parâmetro deve corresponder ao nome esperado pela API do backend
     if (this.filtroNome !== null) {
-      params = params.set('nome', this.filtroNome);
+      parametros = parametros.set('nome', this.filtroNome);
     }
 
     if (this.filtroCategoria !== null) {
-      params = params.set('id', this.filtroCategoria);
+      parametros = parametros.set('id', this.filtroCategoria);
     }
 
     if (this.filtroPrecoMin !== null) {
-      params = params.set('min', this.filtroPrecoMin);
+      parametros = parametros.set('min', this.filtroPrecoMin);
     }
 
     if (this.filtroPrecoMax !== null) {
-      params = params.set('max', this.filtroPrecoMax);
+      parametros = parametros.set('max', this.filtroPrecoMax);
     }
 
     if (this.filtroAtivo !== null) {
-      params = params.set('ativo', this.filtroAtivo);
+      parametros = parametros.set('ativo', this.filtroAtivo);
     }
 
-    return params;
+    return parametros;
   }
 
   obterPaginas(dados: any): void{
