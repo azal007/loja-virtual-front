@@ -47,4 +47,25 @@ export class CarrinhoComponent implements OnInit {
       (total, item) => total + (item.produto.preco * item.quantidade), 0
     );
   }
+
+  aumentarQuantidade(idProduto: number) {
+    this.produtosCarrinho.forEach(item => {
+      if (item.produto.id === idProduto) {
+        item.quantidade++;
+      }
+    });
+  }
+
+  diminuirQuantidade(idProduto: number) {
+      this.produtosCarrinho.forEach(item => {
+        if (item.produto.id === idProduto && item.quantidade > 1) {
+          item.quantidade--;
+        }
+      });
+  }
+
+  removerProduto(idProduto: number) {
+    this.produtosCarrinho = this.produtosCarrinho.filter(item => item.produto.id !== idProduto);
+  }
+
 }
