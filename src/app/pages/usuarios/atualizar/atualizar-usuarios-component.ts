@@ -12,7 +12,6 @@ export class AtualizarUsuariosComponent implements OnInit {
   usuario: Usuario = {
     id: 0,
     nome: '',
-    apelido: '',
     cpf: '',
     dataNascimento: new Date(),
     email: '',

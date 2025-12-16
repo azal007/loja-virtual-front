@@ -11,7 +11,6 @@ export class IncluirUsuariosComponent {
   usuario: Usuario = {
     id: 0,
     nome: '',
-    apelido: '',
     cpf: '',
     dataNascimento: new Date(),
     email: '',
