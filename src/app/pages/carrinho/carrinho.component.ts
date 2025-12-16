@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { ItemCarrinho } from '../../core/model/ItemCarrinho';
 import { ProdutoService } from '../../core/service/produto.service';
 import { Produto } from '../../core/model/Produto';
+
+export interface ProdutoCarrinho {
+  produto: Produto;
+  quantidade: number;
+}
 
 @Component({
   selector: 'app-carrinho',
@@ -9,44 +15,36 @@ import { Produto } from '../../core/model/Produto';
   standalone: false,
 })
 export class CarrinhoComponent implements OnInit {
-  produtos: Produto[] = [];
-  items: ItemCarrinho[] = [];
+  produtosCarrinho: ProdutoCarrinho[] = [];
   valorTotal: number = 0;
 
   constructor(private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
     this.obterProdutosDoCarrinho();
-    this.atualizarResumo();
   }
 
   obterProdutosDoCarrinho() {
     const dadosCarrinho = localStorage.getItem('carrinho');
-    if (dadosCarrinho) {
-      this.items = JSON.parse(dadosCarrinho);
+    if (!dadosCarrinho) {
+      return;
     }
-    const produtosCarregados: Produto[] = [];
 
-    for (const item of this.items) {
-      this.produtoService.buscarPorId(item.idProduto).subscribe((produto: Produto) => {
-        produtosCarregados.push(produto);
-        if (produtosCarregados.length === this.items.length) {
-          this.produtos = produtosCarregados;
-        }
-      });
-    }
+    const items: ItemCarrinho[] = JSON.parse(dadosCarrinho);
+    const requisicoes = items.map(item => this.produtoService.buscarPorId(item.idProduto));
+
+    forkJoin(requisicoes).subscribe((produtos: Produto[]) => {
+      this.produtosCarrinho = produtos.map((produto, index) => ({
+        produto,
+        quantidade: items[index].qtd
+      }));
+      this.calcularValorTotal();
+    });
   }
 
-  // TODO: Implementar os métodos abaixo
-  removerDoCarrinho(id: number) {
-    throw new Error('Method not implemented.');
-  }
-
-  atualizarResumo() {
-    throw new Error('Method not implemented.');
-  }
-
-  finalizarCompra() {
-    throw new Error('Method not implemented.');
+  calcularValorTotal() {
+    this.valorTotal = this.produtosCarrinho.reduce(
+      (total, item) => total + (item.produto.preco * item.quantidade), 0
+    );
   }
 }
