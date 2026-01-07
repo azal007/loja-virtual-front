@@ -42,17 +42,12 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
-  calcularValorTotal() {
-    this.valorTotal = this.produtosCarrinho.reduce(
-      (total, item) => total + (item.produto.preco * item.quantidade), 0
-    );
-  }
-
   aumentarQuantidade(idProduto: number) {
     this.produtosCarrinho.forEach(item => {
       if (item.produto.id === idProduto) {
         item.quantidade++;
       }
+      this.calcularValorTotal();
     });
   }
 
@@ -61,11 +56,26 @@ export class CarrinhoComponent implements OnInit {
         if (item.produto.id === idProduto && item.quantidade > 1) {
           item.quantidade--;
         }
+        this.calcularValorTotal();
       });
   }
 
   removerProduto(idProduto: number) {
-    this.produtosCarrinho = this.produtosCarrinho.filter(item => item.produto.id !== idProduto);
+    const dadosCarrinho = localStorage.getItem('carrinho');
+    if (!dadosCarrinho) {
+      return;
+    }
+    
+    let items: ItemCarrinho[] = JSON.parse(dadosCarrinho);
+    items = items.filter(item => item.idProduto !== idProduto);
+    localStorage.setItem('carrinho', JSON.stringify(items));
+    this.calcularValorTotal();
   }
 
+  calcularValorTotal() {
+    this.valorTotal = this.produtosCarrinho.reduce(
+      (total, item) => total + (item.produto.preco * item.quantidade), 0
+    );
+    this.valorTotal = parseFloat(this.valorTotal.toFixed(2));
+  }
 }

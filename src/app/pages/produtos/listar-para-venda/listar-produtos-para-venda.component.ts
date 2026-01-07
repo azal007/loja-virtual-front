@@ -27,17 +27,11 @@ export class ListarProdutosParaVendaComponent implements OnInit {
   adicionarNoCarrinho(idProduto: number) {
     let carrinho = this.obterCarrinho();
 
-    // TODO Remover este log após criar tela de carrinho
-    console.log('Carrinho atual:', carrinho);
-
     for (let item of carrinho) {
       if (item.idProduto === idProduto) {
         // Produto já existe no carrinho, incrementa a quantidade e encerra
         item.qtd++;
         localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-        // TODO Remover este log após criar tela de carrinho
-        console.log('Carrinho após aumentar QTD produto:', carrinho);
 
         alert('Adicionado!')
         return;
@@ -47,9 +41,6 @@ export class ListarProdutosParaVendaComponent implements OnInit {
     // Produto não existe no carrinho, adiciona novo item
     carrinho.push({ idProduto: idProduto, qtd: 1 });
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-    // TODO Remover este log após criar tela de carrinho
-    console.log('Carrinho após adicionar produto:', carrinho);
 
     alert('Adicionado!')
   }
