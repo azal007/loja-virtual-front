@@ -61,6 +61,11 @@ export class CarrinhoComponent implements OnInit {
   }
 
   removerProduto(idProduto: number) {
+    this.produtosCarrinho = this.produtosCarrinho.filter(
+      item => item.produto.id !== idProduto
+    );
+    
+    // Atualiza o localStorage
     const dadosCarrinho = localStorage.getItem('carrinho');
     if (!dadosCarrinho) {
       return;
@@ -69,6 +74,7 @@ export class CarrinhoComponent implements OnInit {
     let items: ItemCarrinho[] = JSON.parse(dadosCarrinho);
     items = items.filter(item => item.idProduto !== idProduto);
     localStorage.setItem('carrinho', JSON.stringify(items));
+    
     this.calcularValorTotal();
   }
 
