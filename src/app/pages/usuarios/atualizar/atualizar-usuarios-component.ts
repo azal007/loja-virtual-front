@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Usuario } from '../../../core/model/usuario';
+import { Usuario } from '../../../core/model/Usuario';
 import { UsuarioService } from '../../../core/service/usuario.service';
 
 @Component({
@@ -16,8 +16,7 @@ export class AtualizarUsuariosComponent implements OnInit {
     dataNascimento: new Date(),
     email: '',
     senha: '',
-    habilitarNotificacoesPromocoes: false,
-    ativo: false
+    habilitarNotificacoesPromocoes: false
   };
 
   constructor(private route: ActivatedRoute, private usuarioService: UsuarioService) { }

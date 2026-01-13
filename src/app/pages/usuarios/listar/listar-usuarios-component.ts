@@ -1,6 +1,6 @@
 import { Component, OnInit }  from '@angular/core'
 import { UsuarioService }     from '../../../core/service/usuario.service';
-import { Usuario }            from '../../../core/model/usuario';
+import { Usuario }            from '../../../core/model/Usuario';
 import { HttpParams }         from '@angular/common/http';
 
 @Component({

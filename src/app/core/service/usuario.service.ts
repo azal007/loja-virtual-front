@@ -2,7 +2,7 @@ import { Injectable }             from '@angular/core';
 import { HttpClient }             from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 
-import { Usuario }                from '../model/usuario';
+import { Usuario }                from '../model/Usuario';
 import { BaseService }            from './base.service';
 
 @Injectable({providedIn: 'root'})

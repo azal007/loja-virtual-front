@@ -6,5 +6,4 @@ export interface Usuario {
     email: string;
     senha: string;
     habilitarNotificacoesPromocoes: boolean;
-    ativo: boolean;
 }

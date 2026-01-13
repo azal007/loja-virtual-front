@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../../../core/model/usuario';
+import { Usuario } from '../../../core/model/Usuario';
 import { UsuarioService } from '../../../core/service/usuario.service';
 
 @Component({
@@ -15,8 +15,7 @@ export class IncluirUsuariosComponent {
     dataNascimento: new Date(),
     email: '',
     senha: '',
-    habilitarNotificacoesPromocoes: false,
-    ativo: false
+    habilitarNotificacoesPromocoes: false
   };
 
   constructor(private usuarioService: UsuarioService) { }
