@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'sass:color';
+
 @font-face {
   font-family: 'Montserrat';
   src: url('../public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
@@ -374,7 +376,7 @@ button {
   border-radius: 4px;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: color.adjust($primary-color, $lightness: -10%);
   }
 }
 

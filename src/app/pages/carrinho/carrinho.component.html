@@ -1,43 +1,47 @@
 <section>
-    <div *ngIf="produtosCarrinho.length > 0" class="carrinho-produtos">
-        <div *ngFor="let item of produtosCarrinho" class="produto-venda">
-            <div>
-                <img src="{{item.produto.urlImagem}}" alt="{{ item.produto.nome }}" width="150" height="150" loading="lazy">
+  @if (produtosCarrinho.length > 0) {
+    <div class="carrinho-produtos">
+      @for (item of produtosCarrinho; track item) {
+        <div class="produto-venda">
+          <div>
+            <img src="{{item.produto.urlImagem}}" alt="{{ item.produto.nome }}" width="150" height="150" loading="lazy">
+          </div>
+          <div class="produtos-info">
+            <h4>{{ item.produto.nome }}</h4>
+            <p>{{ item.produto.descricao }}</p>
+            <p id="preco">R$ {{ item.produto.preco }}</p>
+          </div>
+          <div class="produto-quantidade">
+            <div style="display: flex; gap: 1rem; align-items: center;">
+              @if (item.quantidade === 1) {
+                <button (click)="removerProduto(item.produto.id)" style="width:50px; height: 40px; border-radius: 0.4rem;">
+                  <i class="fas fa-trash"></i>
+                </button>
+              } @else {
+                <button (click)="diminuirQuantidade(item.produto.id)" style="width:50px; height: 40px; border-radius: 0.4rem;">
+                  <i class="fas fa-minus"></i>
+                </button>
+              }
+              <h4 style="width: 10px;">{{ item.quantidade }}</h4>
+              <button (click)="aumentarQuantidade(item.produto.id)" style="width:50px; height: 40px; border-radius: 0.4rem;">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
-            <div class="produtos-info">
-                <h4>{{ item.produto.nome }}</h4>
-                <p>{{ item.produto.descricao }}</p>
-                <p id="preco">R$ {{ item.produto.preco }}</p>
-            </div>
-            <div class="produto-quantidade">
-                <div style="display: flex; gap: 1rem; align-items: center;">
-                    @if (item.quantidade === 1) {
-                        <button (click)="removerProduto(item.produto.id)" style="width:50px; height: 40px; border-radius: 0.4rem;"> 
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    } @else {
-                        <button (click)="diminuirQuantidade(item.produto.id)" style="width:50px; height: 40px; border-radius: 0.4rem;">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    }
-                    <h4 style="width: 10px;">{{ item.quantidade }}</h4>
-                    <button (click)="aumentarQuantidade(item.produto.id)" style="width:50px; height: 40px; border-radius: 0.4rem;">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                </div>
-            </div>
+          </div>
         </div>
+      }
     </div>
+  }
 </section>
 
 
 <aside class="sidebar-direita">
-    <div class="resumo">
-        <h3>RESUMO</h3>
-        <p>Valor dos produtos {{ valorTotal }}</p>
-        <div class="buttons">
-            <button>Continuar</button>
-            <button>Voltar</button>
-        </div>
+  <div class="resumo">
+    <h3>RESUMO</h3>
+    <p>Valor dos produtos {{ valorTotal }}</p>
+    <div class="buttons">
+      <button (click)="finalizarCompra()">Continuar</button>
+      <button (click)="telaInical()">Voltar</button>
     </div>
+  </div>
 </aside>

@@ -1,14 +1,18 @@
 <section>
-  <div *ngIf="produtos.length > 0" class="lista-produtos-venda">  
-    <div *ngFor="let produto of produtos" class="produto-venda">
-      <img src="{{produto.urlImagem}}" alt="{{ produto.nome }}" width="150" height="150" loading="lazy">
-      <h4>{{ produto.nome }}</h4>
-      <p>R$ {{ produto.preco }}</p>
-      <button (click)="adicionarNoCarrinho(produto.id)">Adicionar ao Carrinho</button>
+  @if (produtos.length > 0) {
+    <div class="lista-produtos-venda">
+      @for (produto of produtos; track produto) {
+        <div class="produto-venda">
+          <img ngSrc="{{produto.urlImagem}}" alt="{{ produto.nome }}" width="150" height="150" loading="lazy">
+          <h4>{{ produto.nome }}</h4>
+          <p>R$ {{ produto.preco }}</p>
+          <button (click)="adicionarNoCarrinho(produto.id)">Adicionar ao Carrinho</button>
+        </div>
+      }
     </div>
-  </div>
+  }
 
-<!-- <div *ngIf="!carregando && produtos.length === 0" class="vazio">
+  <!-- <div *ngIf="!carregando && produtos.length === 0" class="vazio">
   Nenhum produto encontrado.
 </div>
 -->

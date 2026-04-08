@@ -1,4 +1,4 @@
 export interface ItemCarrinho {
-  idProduto: number;
-  qtd: number;
+  produtoId: number;
+  quantidade: number;
 }

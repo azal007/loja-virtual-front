@@ -24,13 +24,13 @@ export class ListarProdutosParaVendaComponent implements OnInit {
     });
   }
 
-  adicionarNoCarrinho(idProduto: number) {
+  adicionarNoCarrinho(produtoId: number) {
     let carrinho = this.obterCarrinho();
 
     for (let item of carrinho) {
-      if (item.idProduto === idProduto) {
+      if (item.produtoId === produtoId) {
         // Produto já existe no carrinho, incrementa a quantidade e encerra
-        item.qtd++;
+        item.quantidade++;
         localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
         alert('Adicionado!')
@@ -39,7 +39,7 @@ export class ListarProdutosParaVendaComponent implements OnInit {
     }
 
     // Produto não existe no carrinho, adiciona novo item
-    carrinho.push({ idProduto: idProduto, qtd: 1 });
+    carrinho.push({ produtoId: produtoId, quantidade: 1 });
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
     alert('Adicionado!')
