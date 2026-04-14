@@ -6,18 +6,29 @@
   </div>
   <div class="icons">
     <a href="/carrinho"><i class="fas fa-shopping-cart"></i></a>
-    <div class="dropdown">
+
+    <!-- Se NAO estiver logado: icone redireciona para login -->
+    <a *ngIf="!authService.isLoggedIn()" href="/login" class="user-icon">
+      <i class="fas fa-user"></i>
+    </a>
+
+    <!-- Se estiver logado: exibe dropdown com opcoes -->
+    <div *ngIf="authService.isLoggedIn()" class="dropdown">
       <i class="fas fa-user dropbtn"></i>
       <div class="dropdown-content">
+        <span class="user-name">Ola, {{ authService.getUser()?.nome || 'Usuario' }}</span>
+        <hr>
         <a href="/produtos/listar">Cadastro de Produtos</a>
-        <!-- Futuramente só vai aparecer para usuário com perfil Administrador -->
         <a href="/categorias/listar">Cadastro de Categorias</a>
-        <!-- Futuramente só vai aparecer para usuário com perfil Administrador -->
-        <a href="/usuarios/listar">Cadastro de Usuários</a>
+        <a href="/usuarios/listar">Cadastro de Usuarios</a>
         <a href="#">Meus Pedidos</a>
+        <hr>
+        <a (click)="logout()" class="logout-link">Sair</a>
       </div>
     </div>
-    <i class="fas fa-sign-out-alt"></i>
+
+    <!-- Icone de logout visivel quando logado -->
+    <i *ngIf="authService.isLoggedIn()" class="fas fa-sign-out-alt" (click)="logout()" style="cursor: pointer;"></i>
   </div>
 </header>
 
